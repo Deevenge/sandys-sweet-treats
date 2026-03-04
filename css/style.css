@@ -298,7 +298,7 @@ footer{
   border:none;
   cursor:pointer;
   position:relative;
-  z-index:10003; /* above everything */
+  z-index:10007; /* above everything */
 }
 
 .hamburger span{
