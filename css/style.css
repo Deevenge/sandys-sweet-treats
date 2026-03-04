@@ -394,3 +394,25 @@ footer{
   }
 
 }
+/* STICKY HEADER FOR ALL DEVICES */
+header {
+  position: sticky; /* sticks at top */
+  top: 0;           /* start at very top */
+  left: 0;
+  width: 100%;
+  z-index: 10000;   /* above everything, including video */
+}
+
+/* Ensure mobile hamburger stays fixed relative to sticky header */
+@media screen and (max-width:768px){
+  .hamburger {
+    position: absolute; /* still inside header, stays top-right */
+    top: 20px;
+    right: 20px;
+    z-index: 10003;
+  }
+
+  nav {
+    top: 100%; /* menu slides just below header */
+  }
+}
