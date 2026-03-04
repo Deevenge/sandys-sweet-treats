@@ -323,35 +323,32 @@ footer{
 
   /* HEADER */
   header{
-    height:auto; /* allow flexible height */
+    height:auto; /* let header grow naturally */
     padding:15px 6%;
-    position:relative;
   }
 
   .logo img{
-    height:70px; /* smaller on mobile */
-    z-index:1001;
-    position:relative;
+    height:80px; /* smaller on mobile so it fits */
   }
 
-  /* Hamburger button top-right */
+  /* Hamburger top-right */
   .hamburger{
     display:flex;
     position:absolute;
-    top:25px;
+    top:20px;
     right:20px;
-    z-index:1002; /* above logo and video */
+    z-index:10003; /* above video */
   }
 
   /* HERO */
   .hero{
-    height:55vh; /* shorter hero so logo fits */
+    height:60vh; /* shorter so video doesn’t cut logo */
   }
 
   .bg-video{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:cover; /* fits hero */
     top:0;
     left:0;
     transform:none;
@@ -361,8 +358,8 @@ footer{
   .hero-content{
     max-width:90%;
     position:relative;
-    z-index:1;
-    padding-top:10px;
+    z-index:2;
+    padding-top:20px;
   }
 
   /* NAVIGATION SLIDE-IN */
@@ -376,8 +373,8 @@ footer{
     transform:translateX(100%);
     transition:transform 0.3s ease;
     flex-direction:column;
-    padding-top:100px; /* leave space for header */
-    z-index:1003; /* above video */
+    padding-top:100px; /* push below header */
+    z-index:10002;
     overflow-y:auto;
   }
 
