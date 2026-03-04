@@ -2,7 +2,7 @@
 
 // --- EMAILJS INIT ---
 (function(){
-  emailjs.init("7t3SmVwZrfxAZCFfx"); // your public key
+  emailjs.init("7t3SmVwZrfxAZCFfx");
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sendOrderBtn = document.getElementById('sendOrder');
 
   let cart = [];
-  let cartTotal = 0; // total in Rands
+  let cartTotal = 0;
 
   const menus = {
     "Scones": ["5 Liters: R250", "10 Liters: R440", "20 Liters: R600"],
@@ -28,12 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
     "Fluffy Muffins": ["5 Liters: R220", "10 Liters: R400", "20 Liters: R580"]
   };
 
-  // --- HELPER: parse price string "R250" -> 250
+  // --- HELPER: parse price ---
   function parsePrice(priceStr) {
     return Number(priceStr.replace(/[^\d.]/g, ''));
   }
 
-  // --- HELPER: update textarea with cart + total
+  // --- UPDATE ORDER TEXTAREA ---
   function updateOrderTextarea() {
     let text = cart.join('\n');
     if(cartTotal > 0){
@@ -42,29 +42,41 @@ document.addEventListener('DOMContentLoaded', () => {
     orderTextarea.value = text;
   }
 
-  // --- HELPER: update popup total
+  // --- UPDATE POPUP TOTAL ---
   function updatePopupTotal() {
+
     const totalDiv = document.getElementById('popupTotal');
+
     if(!totalDiv){
+
       const div = document.createElement('div');
       div.id = 'popupTotal';
       div.style.fontWeight = 'bold';
       div.style.marginTop = '10px';
       div.innerText = `Total: R${cartTotal}`;
+
       menuItems.parentElement.appendChild(div);
+
     } else {
+
       totalDiv.innerText = `Total: R${cartTotal}`;
+
     }
   }
 
   // --- CARD CLICK LOGIC ---
   document.querySelectorAll('.product-grid .card').forEach(card => {
+
     card.addEventListener('click', () => {
+
       const treatName = card.querySelector('h3').innerText;
+
       menuTitle.innerText = treatName;
+
       menuItems.innerHTML = '';
 
       menus[treatName].forEach(item => {
+
         const [size, price] = item.split(':');
 
         const itemCard = document.createElement('div');
@@ -78,123 +90,202 @@ document.addEventListener('DOMContentLoaded', () => {
         addBtn.innerText = 'Add to Order';
 
         addBtn.addEventListener('click', () => {
+
           const orderText = `${treatName} - ${size.trim()} - ${price.trim()}`;
+
           cart.push(orderText);
 
-          // --- update total
           const priceNumber = parsePrice(price.trim());
+
           cartTotal += priceNumber;
 
           updateOrderTextarea();
+
           updatePopupTotal();
 
           alertText.innerText = `${orderText} added to your order!`;
+
           customAlert.style.display = 'flex';
+
         });
 
         itemCard.appendChild(itemText);
         itemCard.appendChild(addBtn);
+
         menuItems.appendChild(itemCard);
+
       });
 
-      updatePopupTotal(); // init total on popup open
+      updatePopupTotal();
+
       menuPopup.style.display = 'flex';
+
     });
+
   });
+
+  // --- WHATSAPP ORDER ---
   const whatsappBtn = document.getElementById("whatsappOrder");
 
-whatsappBtn.addEventListener("click", () => {
+  whatsappBtn.addEventListener("click", () => {
 
-  const name = document.querySelector('#orderForm input[type="text"]').value || "Customer";
-  const orderText = document.querySelector('#orderForm textarea').value;
+    const name = document.querySelector('#orderForm input[type="text"]').value || "Customer";
 
-  if(!orderText){
-    alert("Please add items to your order first.");
-    return;
-  }
+    const orderText = document.querySelector('#orderForm textarea').value;
 
-  const message = `Hello Sandy's Sweet Treats!%0A%0AName: ${name}%0A%0AOrder:%0A${orderText}`;
+    if(!orderText){
 
-  const phone = "27789347917"; // replace with bakery number
+      alert("Please add items to your order first.");
 
-  const url = `https://wa.me/${phone}?text=${message}`;
+      return;
 
-  window.open(url, "_blank");
+    }
 
-});
+    const message = `Hello Sandy's Sweet Treats!%0A%0AName: ${name}%0A%0AOrder:%0A${orderText}`;
+
+    const phone = "27789347917";
+
+    const url = `https://wa.me/${phone}?text=${message}`;
+
+    window.open(url, "_blank");
+
+  });
 
   // --- POPUP CLOSE ---
   closePopup.addEventListener('click', () => menuPopup.style.display = 'none');
+
   menuPopup.addEventListener('click', e => {
+
     if (e.target === menuPopup) menuPopup.style.display = 'none';
+
   });
 
   // --- CUSTOM ALERT BUTTONS ---
   continueBtn.addEventListener('click', () => {
+
     customAlert.style.display = 'none';
+
     menuPopup.style.display = 'none';
+
     document.getElementById('products').scrollIntoView({behavior: 'smooth'});
+
   });
 
   sendOrderBtn.addEventListener('click', () => {
+
     customAlert.style.display = 'none';
+
     menuPopup.style.display = 'none';
+
     document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
+
   });
 
-  // --- FORM SUBMISSION LOGIC ---
+  // --- FORM SUBMISSION ---
   const form = document.getElementById("orderForm");
+
   const submitBtn = document.getElementById("submitBtn");
+
   const successMessage = document.getElementById("successMessage");
 
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); // prevent default form submission
+
+    e.preventDefault();
+
     submitBtn.disabled = true;
+
     submitBtn.innerHTML = "Sending <span class='dots'></span>";
+
     successMessage.innerText = "";
 
     const name = form.querySelector('input[type="text"]').value.trim();
+
     const email = form.querySelector('input[type="email"]').value.trim();
+
     const orderDetails = form.querySelector('textarea').value.trim();
 
     if (!name || !email || !orderDetails) {
+
       successMessage.innerText = "Please fill in all fields.";
+
       submitBtn.disabled = false;
+
       submitBtn.innerHTML = "Send Order";
+
       return;
+
     }
 
+    // --- GENERATE PDF ---
+    const { jsPDF } = window.jspdf;
+
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+
+    doc.text("Sandy's Sweet Treats", 20, 20);
+
+    doc.setFontSize(12);
+
+    doc.text(`Customer: ${name}`, 20, 40);
+
+    doc.text(`Email: ${email}`, 20, 50);
+
+    doc.text("Order Details:", 20, 70);
+
+    const lines = doc.splitTextToSize(orderDetails, 170);
+
+    doc.text(lines, 20, 80);
+
+    doc.save("Sandy_Order_Invoice.pdf");
+
+    // --- SEND EMAIL ---
     emailjs.send("service_5x43lc8", "template_gk7slp7", {
+
       name: name,
+
       email: email,
+
       order_details: orderDetails,
-      title: "New Order from Website" // for your template
+
+      title: "New Order from Website"
+
     })
-    .then((response) => {
-      console.log("Email sent successfully!", response);
-      successMessage.innerText = "Thank you! Your order has been received. We’ll contact you soon.";
+
+    .then(() => {
+
+      successMessage.innerText = "Order sent successfully! Invoice downloaded.";
+
       form.reset();
 
-      // --- clear cart & total ---
       cart = [];
+
       cartTotal = 0;
+
       orderTextarea.value = '';
+
       const popupTotal = document.getElementById('popupTotal');
+
       if(popupTotal) popupTotal.innerText = '';
 
       submitBtn.disabled = false;
-      submitBtn.innerHTML = "Send Order";
-    })
-    .catch((error) => {
-      console.error("EmailJS Error:", error);
-      successMessage.innerText = "Oops! Something went wrong. Please try again.";
-      submitBtn.disabled = false;
+
       submitBtn.innerHTML = "Send Order";
 
-      if(error && error.text) {
-        successMessage.innerText += `\nError: ${error.text}`;
-      }
+    })
+
+    .catch((error) => {
+
+      console.error("EmailJS Error:", error);
+
+      successMessage.innerText = "Oops! Something went wrong.";
+
+      submitBtn.disabled = false;
+
+      submitBtn.innerHTML = "Send Order";
+
     });
+
   });
 
 });

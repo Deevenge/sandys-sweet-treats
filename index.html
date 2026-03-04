@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Sandy's Sweet Treats - Freshly baked scones, cookies and muffins made with love.">
 <title>Sandy's Sweet Treats | Freshly Baked Goodness</title>
-<link rel="stylesheet" href="css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -15,6 +16,7 @@
 
 <header>
   <div class="container">
+
     <div class="logo">
       <img src="imgs/sandlogo(1).png" alt="Sandy's Sweet Treats">
     </div>
@@ -33,71 +35,103 @@
         <li><a href="#contact">Order</a></li>
       </ul>
     </nav>
+
   </div>
 </header>
 
 <section class="hero" id="home">
+
   <video autoplay muted loop playsinline class="bg-video">
     <source src="imgs/b2.mp4" type="video/mp4">
   </video>
+
   <div class="overlay"></div>
+
   <div class="hero-content">
     <h1>Sweet Luxury Delights</h1>
     <p>Freshly baked scones, cookies & muffins made with love</p>
     <a href="#products" class="btn">Explore Menu</a>
   </div>
+
 </section>
 
 <section id="about" class="about">
   <div class="container">
+
     <h2>About Sandy</h2>
+
     <p>
       At Sandy's Sweet Treats, baking isn’t just business — it’s passion.
       Every batch is handmade using quality ingredients to bring warmth
       and sweetness to your day.
     </p>
+
   </div>
 </section>
 
 <section id="products" class="products">
   <div class="container">
+
     <h2>Our Signature Treats</h2>
+
     <div class="product-grid">
+
       <div class="card">
         <div class="card-img scones"></div>
         <h3>Scones</h3>
         <p>Soft, golden and perfect with jam or cream.</p>
       </div>
+
       <div class="card">
         <div class="card-img cookies"></div>
         <h3>Classic Cookies</h3>
         <p>Crunchy outside, chewy inside. Chocolate chip heaven.</p>
       </div>
+
       <div class="card">
         <div class="card-img muffins"></div>
         <h3>Fluffy Muffins</h3>
         <p>Moist, flavorful and baked fresh every morning.</p>
       </div>
+
     </div>
   </div>
 </section>
 
 <section id="contact" class="contact">
+
   <div class="container">
+
     <h2>Place Your Order</h2>
+
     <form id="orderForm">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="What would you like to order?" required></textarea>
+
+      <input type="text" id="customerName" placeholder="Your Name" required>
+
+      <input type="email" id="customerEmail" placeholder="Your Email" required>
+
+      <textarea id="orderMessage" placeholder="What would you like to order?" required></textarea>
+
       <button type="submit" class="btn" id="submitBtn">
         Send Order <span class="dots"></span>
       </button>
+
       <button type="button" id="whatsappOrder" class="btn">
-Order via WhatsApp
-</button>
+        Order via WhatsApp
+      </button>
+
     </form>
+
+    <!-- ORDER PREVIEW -->
+    <div id="orderPreview" style="display:none; margin-top:20px;">
+      <h3>Order Summary</h3>
+      <p id="summaryText"></p>
+    </div>
+
     <p id="successMessage" class="success"></p>
+
   </div>
+
 </section>
 
 <footer>
@@ -105,31 +139,58 @@ Order via WhatsApp
 </footer>
 
 <!-- MENU POPUP -->
+
 <div id="menuPopup">
+
   <div class="menu-content">
+
     <button id="closePopup">&times;</button>
+
     <div class="menu-header">
       <img src="imgs/sandlogo.gif" alt="Logo">
       <h3 id="menuTitle"></h3>
     </div>
+
     <ul id="menuItems"></ul>
+
     <button id="finishOrder" class="btn">Finish Order</button>
+
   </div>
+
 </div>
 
 <!-- CUSTOM ALERT MODAL -->
+
 <div id="customAlert">
+
   <div class="alert-content">
+
     <p id="alertText"></p>
+
     <div class="alert-buttons">
-      <button id="continueOrdering" class="btn">Continue Ordering</button>
-      <button id="sendOrder" class="btn">Send Order</button>
+
+      <button id="continueOrdering" class="btn">
+        Continue Ordering
+      </button>
+
+      <button id="sendOrder" class="btn">
+        Send Order
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script src="js/main.js" type="module"></script>
+<!-- PDF LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- EMAILJS (FIXED VERSION) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- MAIN JS -->
+<script src="js/main.js"></script>
 
 </body>
 </html>
