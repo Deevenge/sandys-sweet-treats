@@ -31,3 +31,13 @@ navLinks.forEach(link => {
     nav.classList.remove('active');
   });
 });
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    const offset = 100; // header height
+    const topPos = target.offsetTop - offset;
+    window.scrollTo({ top: topPos, behavior: 'smooth' });
+    nav.classList.remove('active'); // close mobile menu
+  });
+});
