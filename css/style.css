@@ -319,7 +319,7 @@ footer{
   }
 
   .logo img{
-    height:80px;
+    height:120px; /* slightly bigger than 80px before */
   }
 
   /* hamburger visible top-right */
