@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- WHATSAPP ORDER ---
-const whatsappBtn = document.getElementById("whatsappOrder");
+/*const whatsappBtn = document.getElementById("whatsappOrder");
 
 whatsappBtn.addEventListener("click", () => {
 
@@ -151,7 +151,7 @@ ${orderText}`;
   const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
 
   window.location.href = url; // better than window.open
-});
+});*/
 
   // --- POPUP CLOSE ---
   closePopup.addEventListener('click', () => menuPopup.style.display = 'none');
