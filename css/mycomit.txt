@@ -1,0 +1,3 @@
+git add .
+git commit -m "Updated mobile responsiveness and hero video" 
+git push
