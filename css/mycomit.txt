@@ -1,3 +1,3 @@
 git add .
-git commit -m "removed and commented out whatsapp order option" 
+git commit -m "hidden order form" 
 git push

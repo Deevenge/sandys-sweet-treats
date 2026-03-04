@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     totalDiv.innerText = `Total: R${cartTotal}`;
   }
+  
 
   // --- CARD CLICK LOGIC ---
   document.querySelectorAll('.product-grid .card').forEach(card => {
@@ -224,5 +225,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   });
+  // ================= GALLERY LOGIC =================
+
+const galleryItems = document.querySelectorAll('.gallery-item');
+const lightbox = document.getElementById('lightbox');
+const lightboxContent = document.querySelector('.lightbox-content');
+const closeLightbox = document.getElementById('closeLightbox');
+
+// Scroll Animation
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+galleryItems.forEach(item => observer.observe(item));
+
+// Click to open
+galleryItems.forEach(item => {
+
+  item.addEventListener('click', () => {
+
+    lightbox.style.display = 'flex';
+    lightboxContent.innerHTML = '';
+
+    const media = item.querySelector('img, video').cloneNode(true);
+
+    if(media.tagName === 'VIDEO'){
+      media.controls = true;
+      media.autoplay = true;
+    }
+
+    lightboxContent.appendChild(media);
+
+  });
+
+});
+
+// Close
+closeLightbox.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+  lightboxContent.innerHTML = '';
+});
+
+lightbox.addEventListener('click', (e) => {
+  if(e.target === lightbox){
+    lightbox.style.display = 'none';
+    lightboxContent.innerHTML = '';
+  }
+});
 
 });
