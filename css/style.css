@@ -393,6 +393,7 @@ footer{
   }
 }
 /* MENU POPUP STYLES */
+/* MENU POPUP */
 #menuPopup {
   display: none;
   position: fixed;
@@ -402,6 +403,30 @@ footer{
   align-items: center;
   z-index: 10005;
 }
+
+/* MINI MENU CARDS INSIDE POPUP */
+.menu-item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--secondary);
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.menu-item-card p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.menu-item-card .btn {
+  padding: 5px 12px;
+  font-size: 13px;
+  border-radius: 20px;
+}
+
 
 .menu-content {
   background: var(--light);

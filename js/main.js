@@ -1,43 +1,3 @@
-// ------------------- HAMBURGER -------------------
-const hamburger = document.querySelector('.hamburger');
-const nav = document.querySelector('nav');
-
-hamburger.addEventListener('click', () => {
-  nav.classList.toggle('active');
-});
-
-// ------------------- SMOOTH SCROLL -------------------
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    const offset = 100; 
-    const topPos = target.offsetTop - offset;
-    window.scrollTo({ top: topPos, behavior: 'smooth' });
-    nav.classList.remove('active'); 
-  });
-});
-
-// ------------------- FORM SUBMIT -------------------
-const form = document.getElementById("orderForm");
-const submitBtn = document.getElementById("submitBtn");
-const successMessage = document.getElementById("successMessage");
-
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = "Sending <span class='dots'></span>";
-
-  setTimeout(() => {
-    successMessage.innerText =
-      "Thank you! Your order has been received. We’ll contact you soon.";
-    form.reset();
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = "Send Order";
-  }, 2000);
-});
-
-// ------------------- MENU & CART -------------------
 document.addEventListener('DOMContentLoaded', () => {
 
   const menuPopup = document.getElementById('menuPopup');
@@ -67,11 +27,19 @@ document.addEventListener('DOMContentLoaded', () => {
       menuItems.innerHTML = '';
 
       menus[treatName].forEach(item => {
-        const li = document.createElement('li');
-        li.innerText = item;
+        const [size, price] = item.split(':');
 
-        li.addEventListener('click', () => {
-          const [size, price] = item.split(':');
+        const itemCard = document.createElement('div');
+        itemCard.classList.add('menu-item-card');
+
+        const itemText = document.createElement('p');
+        itemText.innerText = `${size.trim()} - ${price.trim()}`;
+
+        const addBtn = document.createElement('button');
+        addBtn.classList.add('btn');
+        addBtn.innerText = 'Add to Order';
+
+        addBtn.addEventListener('click', () => {
           const orderText = `${treatName} - ${size.trim()} - ${price.trim()}`;
           cart.push(orderText);
           orderTextarea.value = cart.join('\n');
@@ -80,7 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
           customAlert.style.display = 'flex';
         });
 
-        menuItems.appendChild(li);
+        itemCard.appendChild(itemText);
+        itemCard.appendChild(addBtn);
+        menuItems.appendChild(itemCard);
       });
 
       menuPopup.style.display = 'flex';
