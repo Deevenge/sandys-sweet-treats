@@ -203,15 +203,15 @@ nav ul li a:hover::after{
 
 /* PRODUCT IMAGES */
 .scones{
-  background-image:url("https://images.unsplash.com/photo-1606313564200-e75d5e30476c");
+  background-image:url(../imgs/gallery/co5.png);
 }
 
 .cookies{
-  background-image:url("https://images.unsplash.com/photo-1499636136210-6f4ee915583e");
+  background-image:url(../imgs/gallery/co4.png);
 }
 
 .muffins{
-  background-image:url("https://images.unsplash.com/photo-1608198093002-ad4e005484ec");
+  background-image:url(../imgs/gallery/muffs.png);
 }
 
 /* ABOUT */
@@ -591,4 +591,139 @@ footer{
   font-size: 40px;
   color: white;
   cursor: pointer;
+}
+/* SIGNATURE SWITCHING CARDS */
+
+.signature-gallery {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.gallery-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.gallery-card:hover {
+  transform: translateY(-10px);
+}
+
+.gallery-card-img {
+  height: 250px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 15px;
+  transition: background-image 1s ease-in-out;
+}
+
+.gallery-card h3 {
+  margin-top: 10px;
+}
+
+/* POPUP OVERLAY */
+.gallery-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* POPUP BOX */
+.gallery-popup-content {
+  background: white;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 25px;
+  padding: 30px;
+  position: relative;
+  animation: popIn 0.4s ease forwards;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* CLOSE BUTTON */
+.gallery-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* IMAGE */
+.gallery-popup-img {
+  height: 350px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+/* TEXT */
+.gallery-popup-text h2 {
+  margin-bottom: 10px;
+}
+
+.about {
+  padding: 60px 20px;
+  background-color: #fff8f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.about-flex {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap; /* stacks on small screens */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1 1 500px;
+}
+
+.about-text h2 {
+  font-size: 36px;
+  margin-bottom: 25px;
+  color: var(--dark)
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #e67e22;
+  font-weight: 600;
+}
+
+.about-img {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.about-img img {
+  max-width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
 }

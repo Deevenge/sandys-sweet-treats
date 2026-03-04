@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     totalDiv.innerText = `Total: R${cartTotal}`;
   }
-  
 
   // --- CARD CLICK LOGIC ---
   document.querySelectorAll('.product-grid .card').forEach(card => {
@@ -225,56 +224,147 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   });
-  // ================= GALLERY LOGIC =================
 
-const galleryItems = document.querySelectorAll('.gallery-item');
-const lightbox = document.getElementById('lightbox');
-const lightboxContent = document.querySelector('.lightbox-content');
-const closeLightbox = document.getElementById('closeLightbox');
+}); 
+// ===============================
+// AUTO IMAGE SWITCHING GALLERY
+// ===============================
 
-// Scroll Animation
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
+const galleryImages = {
+  galleryScones: [
+    "imgs/gallery/nu3.png",
+    "imgs/gallery/nu2.png",
+    "imgs/gallery/co1.png"
+  ],
+  galleryCookies: [
+     "imgs/gallery/co3.png",
+    "imgs/gallery/co2.png",
+    "imgs/gallery/mf2.jpg"
+  ],
+  galleryMuffins: [
+   "imgs/gallery/nu1.png",
+    "imgs/gallery/c2.png",
+    "imgs/gallery/mf3.jpg"
+  ]
+};
+
+Object.keys(galleryImages).forEach(id => {
+  const element = document.getElementById(id);
+  const images = galleryImages[id];
+  let index = 0;
+
+  element.style.backgroundImage = `url(${images[index]})`;
+
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    element.style.backgroundImage = `url(${images[index]})`;
+  }, 5000);
+});
+
+
+// ===============================
+// MAKE GALLERY CARDS CLICKABLE
+// ===============================
+
+document.querySelectorAll('.gallery-card').forEach(card => {
+
+  card.addEventListener('click', () => {
+
+    const treatName = card.getAttribute('data-treat');
+
+    if(menus[treatName]){
+
+      menuTitle.innerText = treatName;
+      menuItems.innerHTML = '';
+
+      menus[treatName].forEach(item => {
+
+        const [size, price] = item.split(':');
+
+        const itemCard = document.createElement('div');
+        itemCard.classList.add('menu-item-card');
+
+        const itemText = document.createElement('p');
+        itemText.innerText = `${size.trim()} - ${price.trim()}`;
+
+        const addBtn = document.createElement('button');
+        addBtn.classList.add('btn');
+        addBtn.innerText = 'Add to Order';
+
+        addBtn.addEventListener('click', () => {
+
+          const orderText = `${treatName} - ${size.trim()} - ${price.trim()}`;
+
+          cart.push(orderText);
+          cartTotal += parsePrice(price.trim());
+
+          updateOrderTextarea();
+          updatePopupTotal();
+
+          alertText.innerText = `${orderText} added to your order!`;
+          customAlert.style.display = 'flex';
+        });
+
+        itemCard.appendChild(itemText);
+        itemCard.appendChild(addBtn);
+        menuItems.appendChild(itemCard);
+
+      });
+
+      updatePopupTotal();
+      menuPopup.style.display = 'flex';
     }
-  });
-}, { threshold: 0.2 });
-
-galleryItems.forEach(item => observer.observe(item));
-
-// Click to open
-galleryItems.forEach(item => {
-
-  item.addEventListener('click', () => {
-
-    lightbox.style.display = 'flex';
-    lightboxContent.innerHTML = '';
-
-    const media = item.querySelector('img, video').cloneNode(true);
-
-    if(media.tagName === 'VIDEO'){
-      media.controls = true;
-      media.autoplay = true;
-    }
-
-    lightboxContent.appendChild(media);
 
   });
 
 });
 
-// Close
-closeLightbox.addEventListener('click', () => {
-  lightbox.style.display = 'none';
-  lightboxContent.innerHTML = '';
-});
+// ===============================
+// GALLERY POP OUT FEATURE
+// ===============================
 
-lightbox.addEventListener('click', (e) => {
-  if(e.target === lightbox){
-    lightbox.style.display = 'none';
-    lightboxContent.innerHTML = '';
+const popup = document.getElementById('galleryPopup');
+const popupImage = document.getElementById('popupImage');
+const popupTitle = document.getElementById('popupTitle');
+const popupDescription = document.getElementById('popupDescription');
+const popupClose = document.getElementById('galleryClose');
+
+const treatInfo = {
+  "Scones": {
+    desc: "Our homemade scones are baked fresh daily using traditional recipes. Crispy on the outside, soft and buttery inside & perfect with cream and jam."
+  },
+  "Classic Cookies": {
+    desc: "Our classic cookies are rich, chewy, and full of flavor. Made with premium chocolate and baked to golden perfection."
+  },
+  "Fluffy Muffins": {
+    desc: "Our muffins are light, moist, and bursting with sweetness. Perfect for breakfast or a sweet afternoon treat."
   }
+};
+
+document.querySelectorAll('.gallery-card').forEach(card => {
+
+  card.addEventListener('click', () => {
+
+    const treatName = card.getAttribute('data-treat');
+
+    popupTitle.innerText = treatName;
+    popupDescription.innerText = treatInfo[treatName].desc;
+
+    // Use same switching image background
+    const cardImage = card.querySelector('.gallery-card-img');
+    popupImage.style.backgroundImage = cardImage.style.backgroundImage;
+
+    popup.style.display = "flex";
+  });
+
 });
 
+popupClose.addEventListener('click', () => {
+  popup.style.display = "none";
+});
+
+popup.addEventListener('click', (e) => {
+  if(e.target === popup){
+    popup.style.display = "none";
+  }
 });

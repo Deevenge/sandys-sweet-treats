@@ -29,8 +29,9 @@
       <ul>
         <li><a href="#home">Home</a></li>    
         <li><a href="#about">About</a></li>
-        <li><a href="#products">Our Treats</a></li>
         <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#products">Our Treats</a></li>
+        
       </ul>
     </nav>
 
@@ -51,19 +52,61 @@
 </section>
 
 <section id="about" class="about">
+  <div class="container about-flex">
+    <div class="about-text">
+      <h2>About Sandy</h2>
+      <p>
+        Welcome to <span class="highlight">Sandy's Sweet Treats</span>! Founded by Sandile Mola, a passionate baker from South Africa, our goal is simple: to bring a little sweetness to your day.
+      </p>
+      <p>
+        From soft, buttery scones to crunchy, delicious cookies and fluffy muffins, every treat is <span class="highlight">handmade with love</span> and the finest ingredients.
+      </p>
+      <p>
+        Whether it’s a cozy breakfast, a midday snack, or sharing with friends and family, Sandy's Sweet Treats is all about creating moments of joy through baked goodness.
+      </p>
+      <p>
+        Follow us on TikTok to see our treats in action and stay updated on new flavors and specials! Every bite is a little celebration.
+      </p>
+    </div>
+    <div class="about-img">
+      <img src="imgs/sandlogo.gif" alt="Sandy baking scones" />
+    </div>
+  </div>
+</section>
+<!-- GALLERY SECTION -->
+<section id="gallery" class="gallery">
+
   <div class="container">
-    <h2>About Sandy</h2>
-    <p>
-      At Sandy's Sweet Treats, baking isn’t just business — it’s passion.
-      Every batch is handmade using quality ingredients to bring warmth
-      and sweetness to your day.
-    </p>
+
+    <h2>Behind The Sweet Moments</h2>
+
+    <div class="gallery-grid signature-gallery">
+
+      <div class="gallery-card" data-treat="Scones">
+        <div class="gallery-card-img" id="galleryScones"></div>
+        <h3>Read more</h3>
+      </div>
+
+      <div class="gallery-card" data-treat="Classic Cookies">
+        <div class="gallery-card-img" id="galleryCookies"></div>
+        <h3>Read more</h3>
+      </div>
+
+      <div class="gallery-card" data-treat="Fluffy Muffins">
+        <div class="gallery-card-img" id="galleryMuffins"></div>
+        <h3>Read more</h3>
+      </div>
+
+    </div>
+
   </div>
 
+</section>
 
 <section id="products" class="products">
   <div class="container">
     <h2>Our Signature Treats</h2>
+    <h5>click on your fave menu to start ordering...<h5>
 
     <div class="product-grid">
 
@@ -119,38 +162,7 @@
 
 </section>
 </section>
-<!-- GALLERY SECTION -->
-<section id="gallery" class="gallery">
 
-  <div class="container">
-
-    <h2>Behind The Sweet Moments</h2>
-
-    <div class="gallery-grid">
-
-      <!-- IMAGE -->
-      <div class="gallery-item">
-        <img src="imgs/gallery/co1.png" alt="Fresh baked treats">
-      </div>
-
-      <div class="gallery-item">
-        <img src="imgs/gallery/co2.png" alt="Decorated cupcakes">
-      </div>
-
-      <!-- TIKTOK STYLE VIDEO -->
-      <div class="gallery-item video-item">
-        <video src="imgs/gallery/vid1.mp4" muted loop></video>
-      </div>
-
-      <div class="gallery-item video-item">
-        <video src="imgs/baker2.mp4" muted loop></video>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
 <footer>
   <p>© 2026 Sandy's Sweet Treats. Baked with love.</p>
 </footer>
@@ -182,7 +194,21 @@
     </div>
   </div>
 </div>
+<!-- GALLERY POPUP -->
+<div class="gallery-popup" id="galleryPopup">
+  <div class="gallery-popup-content">
 
+    <span class="gallery-close" id="galleryClose">&times;</span>
+
+    <div class="gallery-popup-img" id="popupImage"></div>
+
+    <div class="gallery-popup-text">
+      <h2 id="popupTitle"></h2>
+      <p id="popupDescription"></p>
+    </div>
+
+  </div>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="js/main.js"></script>
