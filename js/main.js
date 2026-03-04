@@ -125,31 +125,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- WHATSAPP ORDER ---
-  const whatsappBtn = document.getElementById("whatsappOrder");
+const whatsappBtn = document.getElementById("whatsappOrder");
 
-  whatsappBtn.addEventListener("click", () => {
+whatsappBtn.addEventListener("click", () => {
 
-    const name = document.querySelector('#orderForm input[type="text"]').value || "Customer";
+  const name = document.querySelector('#orderForm input[type="text"]').value || "Customer";
+  const orderText = document.querySelector('#orderForm textarea').value;
 
-    const orderText = document.querySelector('#orderForm textarea').value;
+  if(!orderText){
+    alert("Please add items to your order first.");
+    return;
+  }
 
-    if(!orderText){
+  const phone = "27789347917";
 
-      alert("Please add items to your order first.");
+  const message = `Hello Sandy's Sweet Treats!
 
-      return;
+Name: ${name}
 
-    }
+Order:
+${orderText}`;
 
-    const message = `Hello Sandy's Sweet Treats!%0A%0AName: ${name}%0A%0AOrder:%0A${orderText}`;
+  const encodedMessage = encodeURIComponent(message);
 
-    const phone = "27789347917";
+  const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
 
-    const url = `https://wa.me/${phone}?text=${message}`;
-
-    window.open(url, "_blank");
-
-  });
+  window.location.href = url; // better than window.open
+});
 
   // --- POPUP CLOSE ---
   closePopup.addEventListener('click', () => menuPopup.style.display = 'none');
