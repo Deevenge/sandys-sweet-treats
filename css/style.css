@@ -312,23 +312,32 @@ footer{
 /* MOBILE FIXES */
 @media screen and (max-width:768px){
 
-  /* header adjustments */
-  header{
-    height:auto;
-    padding:15px 6%;
+  header {
+    height: auto;
+    padding: 10px 6%;
+  }
+
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* vertical align logo & hamburger */
   }
 
   .logo img{
-    height:120px; /* slightly bigger than 80px before */
+    height:100px; /* slightly bigger than before */
   }
 
-  /* hamburger visible top-right */
   .hamburger{
-    display:flex;
-    position:absolute;
-    top:20px;
-    right:20px;
+    display:flex; /* show hamburger */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    z-index:10003; /* above nav/video */
+    /* removed absolute positioning so it aligns with logo */
   }
+
 
   /* HERO adjustments */
   .hero{
