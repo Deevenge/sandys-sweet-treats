@@ -19,7 +19,15 @@ form.addEventListener("submit", function (e) {
 
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('nav');
+const navLinks = document.querySelectorAll('nav ul li a');
 
 hamburger.addEventListener('click', () => {
   nav.classList.toggle('active');
+});
+
+// Close menu after clicking a link
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('active');
+  });
 });
