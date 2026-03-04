@@ -360,7 +360,8 @@ footer{
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 10;
+  position: relative; /* NEW */
+  z-index: 1000;     /* NEW: makes sure it’s above video */
 }
 
 .hamburger span {
@@ -373,10 +374,6 @@ footer{
 
 /* MOBILE RESPONSIVE NAV */
 @media screen and (max-width:768px){
-  .hamburger {
-    display: flex;
-  }
-
   nav {
     position: absolute;
     top: 100%;
@@ -387,24 +384,27 @@ footer{
     overflow: hidden;
     transition: max-height 0.3s ease;
     flex-direction: column;
+    z-index: 999; /* NEW: above video */
   }
 
+  nav.active {
+    max-height: 300px;
+  }
+}
   nav ul {
     flex-direction: column;
     gap: 20px;
     padding: 15px;
   }
 
-  nav.active {
-    max-height: 300px; /* enough to show all menu items */
-  }
+ 
 
   header .container {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
-}
+
 
 /* HERO VIDEO FIX FOR MOBILE */
 @media screen and (max-width:768px){
