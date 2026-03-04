@@ -101,6 +101,27 @@ document.addEventListener('DOMContentLoaded', () => {
       menuPopup.style.display = 'flex';
     });
   });
+  const whatsappBtn = document.getElementById("whatsappOrder");
+
+whatsappBtn.addEventListener("click", () => {
+
+  const name = document.querySelector('#orderForm input[type="text"]').value || "Customer";
+  const orderText = document.querySelector('#orderForm textarea').value;
+
+  if(!orderText){
+    alert("Please add items to your order first.");
+    return;
+  }
+
+  const message = `Hello Sandy's Sweet Treats!%0A%0AName: ${name}%0A%0AOrder:%0A${orderText}`;
+
+  const phone = "27789347917"; // replace with bakery number
+
+  const url = `https://wa.me/${phone}?text=${message}`;
+
+  window.open(url, "_blank");
+
+});
 
   // --- POPUP CLOSE ---
   closePopup.addEventListener('click', () => menuPopup.style.display = 'none');
