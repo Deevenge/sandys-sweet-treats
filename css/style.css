@@ -510,3 +510,12 @@ footer{
   justify-content: space-between;
   gap: 10px;
 }
+/* HIDDEN CONTACT SECTION */
+.hidden-contact {
+  display: none;
+}
+
+.show-contact {
+  display: block;
+  animation: fadeUp 0.6s ease;
+}
