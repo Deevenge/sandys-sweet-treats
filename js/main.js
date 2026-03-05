@@ -31,6 +31,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const orderTextarea = document.querySelector("#orderForm textarea");
 
+  // LOCK the order textarea via JS
+  orderTextarea.readOnly = true;
+
+  // ADD MODERN STYLING via JS (optional override for older style)
+  Object.assign(orderTextarea.style, {
+    backgroundColor: "#fff4e6",
+    border: "1px solid #ff8fa3",
+    borderRadius: "10px",
+    color: "#6b4226",
+    fontFamily: "'Poppins', sans-serif",
+    fontSize: "1rem",
+    padding: "12px 15px",
+    resize: "none",
+    minHeight: "150px",
+    boxShadow: "inset 0 2px 5px rgba(0,0,0,0.05)",
+    transition: "all 0.3s ease"
+  });
+
+  orderTextarea.addEventListener("focus", () => {
+    orderTextarea.style.outline = "none";
+    orderTextarea.style.borderColor = "#ff6f91";
+    orderTextarea.style.boxShadow = "0 0 10px rgba(255,143,163,0.3)";
+  });
+  orderTextarea.addEventListener("blur", () => {
+    orderTextarea.style.borderColor = "#ff8fa3";
+    orderTextarea.style.boxShadow = "inset 0 2px 5px rgba(0,0,0,0.05)";
+  });
+
   const customAlert = document.getElementById("customAlert");
   const alertText = document.getElementById("alertText");
   const continueBtn = document.getElementById("continueOrdering");
@@ -58,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => contactSection.scrollIntoView({ behavior: "smooth" }), 200);
   };
 
+  // UPDATE LOCKED ORDER TEXTAREA
   const updateOrderTextarea = () => {
     let text = cart.join("\n");
     if (cartTotal > 0) text += `\n--------------------------\nTotal: R${cartTotal}`;
@@ -113,14 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const itemCard = document.createElement("div");
       itemCard.classList.add("menu-item-card");
-      itemCard.style.display = "flex";
-      itemCard.style.justifyContent = "space-between";
-      itemCard.style.alignItems = "center";
-      itemCard.style.padding = "8px";
-      itemCard.style.marginBottom = "5px";
-      itemCard.style.backgroundColor = "#fff";
-      itemCard.style.borderRadius = "5px";
-      itemCard.style.boxShadow = "0 1px 4px rgba(0,0,0,0.1)";
 
       const itemText = document.createElement("p");
       itemText.innerText = `${size.trim()} - ${price.trim()}`;
@@ -129,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const addBtn = document.createElement("button");
       addBtn.classList.add("btn");
       addBtn.innerText = "Add to Oven";
-      addBtn.style.padding = "4px 8px";
 
       addBtn.addEventListener("click", () => {
 
@@ -137,13 +157,14 @@ document.addEventListener("DOMContentLoaded", () => {
         cart.push(orderText);
         cartTotal += parsePrice(price.trim());
 
+        // UPDATE LOCKED ORDER TEXTAREA
         updateOrderTextarea();
         updatePopupTotal();
 
         alertText.innerText = `${orderText} added to your oven!`;
         customAlert.style.display = "flex";
 
-        renderOven(true); // pass true to animate
+        renderOven(true);
       });
 
       itemCard.appendChild(itemText);
@@ -151,9 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
       menuItems.appendChild(itemCard);
     });
 
-    // ===============================
-    // RENDER OVEN FUNCTION WITH ANIMATION
-    // ===============================
     function renderOven(animate = false) {
       ovenContainer.innerHTML = "<h4 style='margin:0 0 10px 0;'>🍪 Your Oven:</h4>";
       if (cart.length === 0) {
@@ -255,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const name = form.querySelector('input[type="text"]').value.trim();
     const email = form.querySelector('input[type="email"]').value.trim();
-    const orderDetails = form.querySelector("textarea").value.trim();
+    const orderDetails = orderTextarea.value.trim(); // READ ONLY, locked
 
     if (!name || !email || !orderDetails) {
       successMessage.innerText = "Please fill in all fields.";
