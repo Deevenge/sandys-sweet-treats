@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ovenContainer.id = "ovenContainer";
       ovenContainer.style.marginTop = "20px";
       ovenContainer.style.padding = "10px";
-      ovenContainer.style.borderTop = "2px dashed #c89b3c";
+      ovenContainer.style.borderTop = "2px dashed #c89b3c;";
       ovenContainer.style.maxHeight = "250px";
       ovenContainer.style.overflowY = "auto";
       ovenContainer.style.backgroundColor = "#fff4e6";
@@ -273,11 +273,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const name = form.querySelector('input[type="text"]').value.trim();
     const email = form.querySelector('input[type="email"]').value.trim();
-   const whatsapp = form.querySelector('input[type="tel"]').value.trim();//whatsapp
-    
     const orderDetails = orderTextarea.value.trim(); // READ ONLY, locked
 
-    if (!name || !email || !whatsapp || !orderDetails) {
+    if (!name || !email || !orderDetails) {
       successMessage.innerText = "Please fill in all fields.";
       submitBtn.disabled = false;
       submitBtn.innerHTML = "Send Order";
@@ -291,14 +289,13 @@ document.addEventListener("DOMContentLoaded", () => {
     doc.setFontSize(12);
     doc.text(`Customer: ${name}`, 20, 40);
     doc.text(`Email: ${email}`, 20, 50);
-    doc.text(`Whatsapp Number: ${whatsappnumber}`, 20, 40);//whatsapp
     doc.text("Order Details:", 20, 70);
     const lines = doc.splitTextToSize(orderDetails, 170);
     doc.text(lines, 20, 80);
     doc.save("Sandy_Order_Invoice.pdf");
 
     emailjs.send("service_5x43lc8", "template_gk7slp7", {
-      name, email,whatsapp,  order_details: orderDetails, title: "New Order from Website"
+      name, email, order_details: orderDetails, title: "New Order from Website"
     }).then(() => {
       successMessage.innerText = "Order sent successfully! Invoice downloaded.";
       form.reset();
