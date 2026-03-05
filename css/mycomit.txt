@@ -1,5 +1,5 @@
 git add .
-git commit -m "altered gallery" 
+git commit -m "final changes for styles" 
 git push
 
 bro my thing is no longer sendingemail at all or creating pdf

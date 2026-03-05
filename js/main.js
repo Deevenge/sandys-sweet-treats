@@ -70,9 +70,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let cartTotal = 0;
 
   const menus = {
-    "Scones": ["5 Liters: R250", "10 Liters: R440", "20 Liters: R600"],
-    "Classic Cookies": ["5 Liters: R200", "10 Liters: R380", "20 Liters: R550"],
-    "Fluffy Muffins": ["5 Liters: R220", "10 Liters: R400", "20 Liters: R580"]
+    "Scones": ["5 Liters: R250", "10 Liters: R440", "20 Liters: R680"],
+    "Classic Cookies": ["5 Liters: R300", "10 Liters: R500", "20 Liters: R850"],
+    "Fluffy Muffins": ["5 Liters: R280", "10 Liters: R550", "20 Liters: R800"]
   };
 
   // ===============================
