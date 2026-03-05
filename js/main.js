@@ -14,14 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector("nav");
 
   if (hamburger && nav) {
-    hamburger.addEventListener("click", () => {
-      nav.classList.toggle("active");
-    });
-
+    hamburger.addEventListener("click", () => nav.classList.toggle("active"));
     document.querySelectorAll("nav ul li a").forEach(link => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("active");
-      });
+      link.addEventListener("click", () => nav.classList.remove("active"));
     });
   }
 
@@ -55,32 +50,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // HELPER FUNCTIONS
   // ===============================
-  function parsePrice(priceStr) {
-    return Number(priceStr.replace(/[^\d.]/g, ""));
-  }
+  const parsePrice = priceStr => Number(priceStr.replace(/[^\d.]/g, ""));
 
-  function revealContactSection() {
+  const revealContactSection = () => {
     contactSection.classList.remove("hidden-contact");
     contactSection.classList.add("show-contact");
+    setTimeout(() => contactSection.scrollIntoView({ behavior: "smooth" }), 200);
+  };
 
-    setTimeout(() => {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }, 200);
-  }
-
-  function updateOrderTextarea() {
+  const updateOrderTextarea = () => {
     let text = cart.join("\n");
-
-    if (cartTotal > 0) {
-      text += `\n--------------------------\nTotal: R${cartTotal}`;
-    }
-
+    if (cartTotal > 0) text += `\n--------------------------\nTotal: R${cartTotal}`;
     orderTextarea.value = text;
-  }
+  };
 
-  function updatePopupTotal() {
+  const updatePopupTotal = () => {
     let totalDiv = document.getElementById("popupTotal");
-
     if (!totalDiv) {
       totalDiv = document.createElement("div");
       totalDiv.id = "popupTotal";
@@ -88,9 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
       totalDiv.style.marginTop = "10px";
       menuItems.parentElement.appendChild(totalDiv);
     }
-
     totalDiv.innerText = `Total: R${cartTotal}`;
-  }
+  };
 
   // ===============================
   // PRODUCT CARD CLICK
@@ -110,24 +94,46 @@ document.addEventListener("DOMContentLoaded", () => {
     menuTitle.innerText = treatName;
     menuItems.innerHTML = "";
 
-    menus[treatName].forEach(item => {
+    let ovenContainer = document.getElementById("ovenContainer");
+    if (!ovenContainer) {
+      ovenContainer = document.createElement("div");
+      ovenContainer.id = "ovenContainer";
+      ovenContainer.style.marginTop = "20px";
+      ovenContainer.style.padding = "10px";
+      ovenContainer.style.borderTop = "2px dashed #ff8fa3";
+      ovenContainer.style.maxHeight = "250px";
+      ovenContainer.style.overflowY = "auto";
+      ovenContainer.style.backgroundColor = "#fff4e6";
+      ovenContainer.style.borderRadius = "8px";
+      menuItems.parentElement.appendChild(ovenContainer);
+    }
 
+    menus[treatName].forEach(item => {
       const [size, price] = item.split(":");
 
       const itemCard = document.createElement("div");
       itemCard.classList.add("menu-item-card");
+      itemCard.style.display = "flex";
+      itemCard.style.justifyContent = "space-between";
+      itemCard.style.alignItems = "center";
+      itemCard.style.padding = "8px";
+      itemCard.style.marginBottom = "5px";
+      itemCard.style.backgroundColor = "#fff";
+      itemCard.style.borderRadius = "5px";
+      itemCard.style.boxShadow = "0 1px 4px rgba(0,0,0,0.1)";
 
       const itemText = document.createElement("p");
       itemText.innerText = `${size.trim()} - ${price.trim()}`;
+      itemText.style.margin = "0";
 
       const addBtn = document.createElement("button");
       addBtn.classList.add("btn");
-      addBtn.innerText = "Add to Oven"; // renamed button
+      addBtn.innerText = "Add to Oven";
+      addBtn.style.padding = "4px 8px";
 
       addBtn.addEventListener("click", () => {
 
         const orderText = `${treatName} - ${size.trim()} - ${price.trim()}`;
-
         cart.push(orderText);
         cartTotal += parsePrice(price.trim());
 
@@ -137,54 +143,74 @@ document.addEventListener("DOMContentLoaded", () => {
         alertText.innerText = `${orderText} added to your oven!`;
         customAlert.style.display = "flex";
 
+        renderOven(true); // pass true to animate
       });
 
       itemCard.appendChild(itemText);
       itemCard.appendChild(addBtn);
       menuItems.appendChild(itemCard);
-
     });
 
-    // Add a "Check Oven" button at bottom
-    const checkBtn = document.createElement("button");
-    checkBtn.classList.add("btn");
-    checkBtn.innerText = "Check Oven";
-    checkBtn.style.marginTop = "10px";
-
-    checkBtn.addEventListener("click", () => {
-      menuItems.innerHTML = ""; // clear items
+    // ===============================
+    // RENDER OVEN FUNCTION WITH ANIMATION
+    // ===============================
+    function renderOven(animate = false) {
+      ovenContainer.innerHTML = "<h4 style='margin:0 0 10px 0;'>🍪 Your Oven:</h4>";
       if (cart.length === 0) {
-        menuItems.innerHTML = "<p>Your oven is empty.</p>";
-      } else {
-        cart.forEach((itemText, index) => {
-          const ovenCard = document.createElement("div");
-          ovenCard.classList.add("menu-item-card");
-
-          const textP = document.createElement("p");
-          textP.innerText = itemText;
-
-          const removeBtn = document.createElement("button");
-          removeBtn.classList.add("btn");
-          removeBtn.innerText = "Remove";
-
-          removeBtn.addEventListener("click", () => {
-            cartTotal -= parsePrice(itemText.split(" - ").pop());
-            cart.splice(index, 1);
-            updateOrderTextarea();
-            updatePopupTotal();
-            openMenu(treatName); // reopen menu after removal
-          });
-
-          ovenCard.appendChild(textP);
-          ovenCard.appendChild(removeBtn);
-          menuItems.appendChild(ovenCard);
-        });
+        ovenContainer.innerHTML += "<p style='margin:0;'>Your oven is empty.</p>";
+        return;
       }
+
+      cart.forEach((itemText, index) => {
+        const ovenCard = document.createElement("div");
+        ovenCard.classList.add("menu-item-card");
+        ovenCard.style.display = "flex";
+        ovenCard.style.justifyContent = "space-between";
+        ovenCard.style.alignItems = "center";
+        ovenCard.style.padding = "6px 8px";
+        ovenCard.style.marginBottom = "5px";
+        ovenCard.style.backgroundColor = "#fff8f0";
+        ovenCard.style.borderRadius = "5px";
+        ovenCard.style.boxShadow = "0 1px 3px rgba(0,0,0,0.1)";
+        ovenCard.style.transition = "all 0.4s ease";
+
+        if (animate && index === cart.length - 1) {
+          ovenCard.style.opacity = "0";
+          ovenCard.style.transform = "translateY(-20px)";
+          setTimeout(() => {
+            ovenCard.style.opacity = "1";
+            ovenCard.style.transform = "translateY(0)";
+          }, 50);
+        }
+
+        const textP = document.createElement("p");
+        textP.innerText = itemText;
+        textP.style.margin = "0";
+        textP.style.fontSize = "0.95rem";
+
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.add("btn");
+        removeBtn.innerText = "❌";
+        removeBtn.style.padding = "2px 6px";
+        removeBtn.style.fontSize = "0.85rem";
+
+        removeBtn.addEventListener("click", () => {
+          cartTotal -= parsePrice(itemText.split(" - ").pop());
+          cart.splice(index, 1);
+          updateOrderTextarea();
+          updatePopupTotal();
+          renderOven();
+        });
+
+        ovenCard.appendChild(textP);
+        ovenCard.appendChild(removeBtn);
+        ovenContainer.appendChild(ovenCard);
+      });
+
       updatePopupTotal();
-    });
+    }
 
-    menuItems.appendChild(checkBtn);
-
+    renderOven();
     updatePopupTotal();
     menuPopup.style.display = "flex";
   }
@@ -192,17 +218,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // CLOSE MENU
   // ===============================
-  if (closePopup) {
-    closePopup.addEventListener("click", () => {
-      menuPopup.style.display = "none";
-    });
-  }
-
-  if (menuPopup) {
-    menuPopup.addEventListener("click", e => {
-      if (e.target === menuPopup) menuPopup.style.display = "none";
-    });
-  }
+  if (closePopup) closePopup.addEventListener("click", () => menuPopup.style.display = "none");
+  if (menuPopup) menuPopup.addEventListener("click", e => { if (e.target === menuPopup) menuPopup.style.display = "none"; });
 
   // ===============================
   // FINISH ORDER
@@ -214,11 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   continueBtn.addEventListener("click", () => {
     customAlert.style.display = "none";
-    menuPopup.style.display = "none";
-
-    document
-      .getElementById("products")
-      .scrollIntoView({ behavior: "smooth" });
+    document.getElementById("products").scrollIntoView({ behavior: "smooth" });
   });
 
   sendOrderBtn.addEventListener("click", () => {
@@ -234,10 +247,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitBtn = document.getElementById("submitBtn");
   const successMessage = document.getElementById("successMessage");
 
-  form.addEventListener("submit", function (e) {
-
+  form.addEventListener("submit", e => {
     e.preventDefault();
-
     submitBtn.disabled = true;
     submitBtn.innerHTML = "Sending...";
     successMessage.innerText = "";
@@ -247,108 +258,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const orderDetails = form.querySelector("textarea").value.trim();
 
     if (!name || !email || !orderDetails) {
-
       successMessage.innerText = "Please fill in all fields.";
-
       submitBtn.disabled = false;
       submitBtn.innerHTML = "Send Order";
-
       return;
     }
 
-    // ===============================
-    // GENERATE PDF
-    // ===============================
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-
     doc.setFontSize(18);
     doc.text("Sandy's Sweet Treats", 20, 20);
-
     doc.setFontSize(12);
     doc.text(`Customer: ${name}`, 20, 40);
     doc.text(`Email: ${email}`, 20, 50);
     doc.text("Order Details:", 20, 70);
-
     const lines = doc.splitTextToSize(orderDetails, 170);
     doc.text(lines, 20, 80);
-
     doc.save("Sandy_Order_Invoice.pdf");
 
-    // ===============================
-    // EMAILJS SEND
-    // ===============================
-    emailjs
-      .send("service_5x43lc8", "template_gk7slp7", {
-        name: name,
-        email: email,
-        order_details: orderDetails,
-        title: "New Order from Website"
-      })
-      .then(() => {
-
-        successMessage.innerText =
-          "Order sent successfully! Invoice downloaded.";
-
-        form.reset();
-
-        cart = [];
-        cartTotal = 0;
-        orderTextarea.value = "";
-
-        const popupTotal = document.getElementById("popupTotal");
-        if (popupTotal) popupTotal.innerText = "";
-
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = "Send Order";
-      })
-      .catch(error => {
-
-        console.error(error);
-
-        successMessage.innerText = "Oops! Something went wrong.";
-
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = "Send Order";
-      });
+    emailjs.send("service_5x43lc8", "template_gk7slp7", {
+      name, email, order_details: orderDetails, title: "New Order from Website"
+    }).then(() => {
+      successMessage.innerText = "Order sent successfully! Invoice downloaded.";
+      form.reset();
+      cart = []; cartTotal = 0; orderTextarea.value = "";
+      const popupTotal = document.getElementById("popupTotal"); if (popupTotal) popupTotal.innerText = "";
+      const ovenContainer = document.getElementById("ovenContainer"); if (ovenContainer) ovenContainer.innerHTML = "";
+      submitBtn.disabled = false; submitBtn.innerHTML = "Send Order";
+    }).catch(err => {
+      console.error(err);
+      successMessage.innerText = "Oops! Something went wrong.";
+      submitBtn.disabled = false; submitBtn.innerHTML = "Send Order";
+    });
   });
 
   // ===============================
   // GALLERY AUTO IMAGE SWITCHING
   // ===============================
   const galleryImages = {
-    galleryScones: [
-      "imgs/gallery/nu3.png",
-      "imgs/gallery/nu2.png",
-      "imgs/gallery/co1.png"
-    ],
-    galleryCookies: [
-      "imgs/gallery/co3.png",
-      "imgs/gallery/co2.png",
-      "imgs/gallery/mf2.jpg"
-    ],
-    galleryMuffins: [
-      "imgs/gallery/nu1.png",
-      "imgs/gallery/c2.png",
-      "imgs/gallery/mf3.jpg"
-    ]
+    galleryScones: ["imgs/gallery/nu3.png","imgs/gallery/nu2.png","imgs/gallery/co1.png"],
+    galleryCookies: ["imgs/gallery/co3.png","imgs/gallery/co2.png","imgs/gallery/mf2.jpg"],
+    galleryMuffins: ["imgs/gallery/nu1.png","imgs/gallery/c2.png","imgs/gallery/mf3.jpg"]
   };
-
   Object.keys(galleryImages).forEach(id => {
-
     const element = document.getElementById(id);
     if (!element) return;
-
-    const images = galleryImages[id];
     let index = 0;
-
-    element.style.backgroundImage = `url(${images[index]})`;
-
+    element.style.backgroundImage = `url(${galleryImages[id][index]})`;
     setInterval(() => {
-
-      index = (index + 1) % images.length;
-      element.style.backgroundImage = `url(${images[index]})`;
-
+      index = (index + 1) % galleryImages[id].length;
+      element.style.backgroundImage = `url(${galleryImages[id][index]})`;
     }, 5000);
   });
 
@@ -362,42 +321,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupClose = document.getElementById("galleryClose");
 
   const treatInfo = {
-
-    Scones: {
-      desc: "Our homemade scones are baked fresh daily using traditional recipes."
-    },
-
-    "Classic Cookies": {
-      desc: "Our classic cookies are rich, chewy, and full of flavor."
-    },
-
-    "Fluffy Muffins": {
-      desc: "Our muffins are light, moist, and bursting with sweetness."
-    }
+    Scones: { desc: "Our homemade scones are baked fresh daily using traditional recipes." },
+    "Classic Cookies": { desc: "Our classic cookies are rich, chewy, and full of flavor." },
+    "Fluffy Muffins": { desc: "Our muffins are light, moist, and bursting with sweetness." }
   };
 
   document.querySelectorAll(".gallery-card").forEach(card => {
-
     card.addEventListener("click", () => {
-
       const treatName = card.getAttribute("data-treat");
-
       popupTitle.innerText = treatName;
       popupDescription.innerText = treatInfo[treatName].desc;
-
       const cardImage = card.querySelector(".gallery-card-img");
       popupImage.style.backgroundImage = cardImage.style.backgroundImage;
-
       popup.style.display = "flex";
     });
   });
 
-  popupClose.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
-
-  popup.addEventListener("click", e => {
-    if (e.target === popup) popup.style.display = "none";
-  });
+  popupClose.addEventListener("click", () => popup.style.display = "none");
+  popup.addEventListener("click", e => { if (e.target === popup) popup.style.display = "none"; });
 
 });
