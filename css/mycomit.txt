@@ -1,44 +1,9 @@
 git add .
-git commit -m "new about section" 
+git commit -m "added whatsapp field" 
 git push
 
-bro i wanna change my about section from this:<section id="about" class="about">
-  <div class="container about-flex">
-
-    <!-- Text Section -->
-    <div class="about-text">
-      <h2>About Sandy</h2>
-
-      <p>Welcome to <span class="highlight">Sandy's Sweet Treats</span>! Founded by Sandile Mola, a passionate baker from South Africa, our goal is simple: to bring a little sweetness to your day.</p>
-
-      <!-- Recipe-style list -->
-<ul class="about-list">
-  <li>🥐 We bake soft, buttery scones, baked fresh daily</li>
-  <li>🍪 Not forgetting our crunchy, delicious cookies perfect for snacking</li>
-  <li>🧁 We also provide fluffy muffins, moist and flavorful</li>
-  <li>❤️ Handmade with love and finest ingredients</li>
-  <li>🎥 Follow us on TikTok for treats in action!</li>
-</ul>
-<br></br>
-      <p>Whether it’s a cozy breakfast, a midday snack, or sharing with friends and family, Sandy's Sweet Treats is all about creating moments of joy through baked goodness.</p>
-
-    </div>
-
-    <!-- Image Section -->
-    <div class="about-img">
-      <img src="imgs/sandlogo.gif" alt="Sandy baking scones" />
-    </div>
-
-  </div>
-</section> to something nice you can even remove those emojis and icon but the new about information is:Welcome to *Sandy’s Sweet Treats*– where every bite carries a story. 
-
-Founded by Sandile Mola, a passionate 26-year-old self-taught baker from the rural heart of Bushbuckridge, Mpumalanga, now based in Gauteng.  
-
-Baking began as more than just a skill for Sandile – it was a way to connect with his late mother, who delighted in his early “mistakes” as he taught himself the craft. What started as a way to support his student journey has grown into a heartfelt mission: to share joy, comfort, and a little sweetness with every creation.  
-
-At Sandy’s Sweet Treats, each cake, pastry, and dessert is made with care, resilience, and love – inspired by humble beginnings and driven by the dream of bringing happiness to your day.  
-
-Sandy’s Sweet Treats – Baked with love, shared with joy......... the about section desgin it in a nice way better than now please, here is my index:<!DOCTYPE html>
+i wanna add whatsapp number also to emailjs but its not hapening why?
+index:<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -122,33 +87,61 @@ Sandy’s Sweet Treats – Baked with love, shared with joy......... the about s
 </section>
 
 <section id="about" class="about">
+
   <div class="container about-flex">
 
-    <!-- Text Section -->
-    <div class="about-text">
-      <h2>About Sandy</h2>
-
-      <p>Welcome to <span class="highlight">Sandy's Sweet Treats</span>! Founded by Sandile Mola, a passionate baker from South Africa, our goal is simple: to bring a little sweetness to your day.</p>
-
-      <!-- Recipe-style list -->
-<ul class="about-list">
-  <li>🥐 We bake soft, buttery scones, baked fresh daily</li>
-  <li>🍪 Not forgetting our crunchy, delicious cookies perfect for snacking</li>
-  <li>🧁 We also provide fluffy muffins, moist and flavorful</li>
-  <li>❤️ Handmade with love and finest ingredients</li>
-  <li>🎥 Follow us on TikTok for treats in action!</li>
-</ul>
-<br></br>
-      <p>Whether it’s a cozy breakfast, a midday snack, or sharing with friends and family, Sandy's Sweet Treats is all about creating moments of joy through baked goodness.</p>
-
+    <!-- IMAGE -->
+    <div class="about-img">
+      <img src="imgs/sandlogo.gif" alt="Sandile baking">
     </div>
 
-    <!-- Image Section -->
-    <div class="about-img">
-      <img src="imgs/sandlogo.gif" alt="Sandy baking scones" />
+    <!-- TEXT -->
+    <div class="about-text">
+
+      <h2>The Story Behind Sandy's Sweet Treats</h2>
+
+      <p class="about-intro">
+        Welcome to <span class="highlight">Sandy’s Sweet Treats</span>, where every bite carries a story.
+      </p>
+
+      <div class="about-story">
+
+        <p>
+          Founded by <strong>Sandile Mola</strong>, a passionate 
+          <strong>26-year-old self-taught baker</strong> from the rural heart of 
+          <strong>Bushbuckridge, Mpumalanga</strong>, now based in Gauteng.
+        </p>
+
+        <p>
+          Baking started as more than just learning a skill.  
+          It became a special way for Sandile to connect with his late mother,
+          who always found joy in his early baking “mistakes” while he taught
+          himself the craft.
+        </p>
+
+        <p>
+          What began as a way to support his student journey slowly grew
+          into something bigger, a mission to share comfort, happiness,
+          and a little sweetness with every creation.
+        </p>
+
+      </div>
+
+      <div class="about-quote">
+        <p>
+          “At Sandy’s Sweet Treats, every cake, pastry and dessert is made
+          with care, resilience and love.”
+        </p>
+      </div>
+
+      <p class="about-ending">
+        <strong>Sandy’s Sweet Treats — Baked with love, shared with joy.</strong>
+      </p>
+
     </div>
 
   </div>
+
 </section>
 
 <section id="products" class="products">
@@ -191,6 +184,7 @@ Sandy’s Sweet Treats – Baked with love, shared with joy......... the about s
 
       <input type="text" id="customerName" placeholder="Your Name" required>
       <input type="email" id="customerEmail" placeholder="Your Email" required>
+      <input type="text" id="customernumber" placeholder="Your whatsapp number" required>
       <textarea id="orderMessage" placeholder="What would you like to order?" required></textarea>
 
       <button type="submit" class="btn" id="submitBtn">
@@ -428,7 +422,7 @@ nav ul li a:hover::after{
 }
 
 .btn:hover{
-  background:#ff5c7a;
+  background:#c89b3c;
   transform:translateY(-3px);
 }
 
@@ -467,22 +461,18 @@ nav ul li a:hover::after{
 
 /* PRODUCT IMAGES */
 .scones{
-  background-image:url(../imgs/gallery/co5.png);
+  background-image:url(../imgs/new/scones3.jpg);
 }
 
 .cookies{
-  background-image:url(../imgs/gallery/co4.png);
+  background-image:url(../imgs/new/coockie1.jpg);
 }
 
 .muffins{
   background-image:url(../imgs/gallery/muffs.png);
 }
 
-/* ABOUT */
-.about{
-  padding:70px 0;
-  text-align:center;
-}
+
 
 /* CONTACT */
 .contact{
@@ -705,7 +695,7 @@ footer{
 }
 
 .menu-item-card .btn:hover {
-  background: #ff5c7a;
+  background: #c89b3c;;
   transform: translateY(-2px);
 }
 
@@ -1012,75 +1002,76 @@ footer{
 .gallery-popup-text h2 {
   margin-bottom: 10px;
 }
+/* ===============================
+   ABOUT SECTION (CLEAN VERSION)
+================================ */
 
-.about {
-  padding: 60px 20px;
-  background-color: #fff8f0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-}
-
-.about-flex {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  flex-wrap: wrap; /* stacks on small screens */
-  max-width: 1200px;
-  margin: 0 auto;
+.about{
+  padding:80px 0;
+  background:#fff8f0;
 }
 
-.about-text {
-  flex: 1 1 500px;
+.about-flex{
+  display:flex;
+  align-items:center;
+  gap:60px;
+  flex-wrap:wrap;
 }
 
-.about-text h2 {
-  font-size: 36px;
-  margin-bottom: 25px;
-  color: var(--dark)
+.about-img{
+  flex:1 1 400px;
+  text-align:center;
 }
 
-.about-text p {
-  font-size: 18px;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-.about-list {
-  list-style: none; /* remove default bullets */
-  padding-left: 0;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  font-size: 18px;
-  line-height: 1.7;
+.about-img img{
+  width:100%;
+  max-width:420px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-.about-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+.about-text{
+  flex:1 1 500px;
 }
 
-/* optional: make emoji bigger */
-.about-list li::before {
-  content: ''; /* no bullet needed since emoji is inline */
+.about-text h2{
+  font-size:34px;
+  margin-bottom:20px;
+  color:var(--dark);
 }
 
-.highlight {
-  color: #e67e22;
-  font-weight: 600;
+.about-intro{
+  font-size:20px;
+  font-weight:500;
+  margin-bottom:20px;
 }
 
-.about-img {
-  flex: 1 1 400px;
-  text-align: center;
+.about-story p{
+  margin-bottom:16px;
+  line-height:1.8;
+  font-size:17px;
 }
 
-.about-img img {
-  max-width: 100%;
-  border-radius: 15px;
-  object-fit: cover;
+.about-quote{
+  background:#fff4e6;
+  border-left:5px solid #e67e22;
+  padding:18px 20px;
+  margin:25px 0;
+  border-radius:10px;
+  font-style:italic;
+  font-size:17px;
 }
+
+.about-ending{
+  font-size:18px;
+  margin-top:10px;
+}
+
+.highlight{
+  color:#e67e22;
+  font-weight:600;
+}
+
 
 /* ================= MOBILE IMPROVEMENTS ================= */
 
@@ -1193,7 +1184,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ADD MODERN STYLING via JS (optional override for older style)
   Object.assign(orderTextarea.style, {
     backgroundColor: "#fff4e6",
-    border: "1px solid #ff8fa3",
+    border: "1px solid #c89b3c",
     borderRadius: "10px",
     color: "#6b4226",
     fontFamily: "'Poppins', sans-serif",
@@ -1207,11 +1198,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   orderTextarea.addEventListener("focus", () => {
     orderTextarea.style.outline = "none";
-    orderTextarea.style.borderColor = "#ff6f91";
+    orderTextarea.style.borderColor = "#c89b3c";
     orderTextarea.style.boxShadow = "0 0 10px rgba(255,143,163,0.3)";
   });
   orderTextarea.addEventListener("blur", () => {
-    orderTextarea.style.borderColor = "#ff8fa3";
+    orderTextarea.style.borderColor = "#c89b3c";
     orderTextarea.style.boxShadow = "inset 0 2px 5px rgba(0,0,0,0.05)";
   });
 
@@ -1285,7 +1276,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ovenContainer.id = "ovenContainer";
       ovenContainer.style.marginTop = "20px";
       ovenContainer.style.padding = "10px";
-      ovenContainer.style.borderTop = "2px dashed #ff8fa3";
+      ovenContainer.style.borderTop = "2px dashed #c89b3c";
       ovenContainer.style.maxHeight = "250px";
       ovenContainer.style.overflowY = "auto";
       ovenContainer.style.backgroundColor = "#fff4e6";
@@ -1429,9 +1420,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const name = form.querySelector('input[type="text"]').value.trim();
     const email = form.querySelector('input[type="email"]').value.trim();
+    const whatsappnumber = form.querySelector('input[type="text"]').value.trim();//whatsapp
+    
     const orderDetails = orderTextarea.value.trim(); // READ ONLY, locked
 
-    if (!name || !email || !orderDetails) {
+    if (!name || !email || !whatsappnumber || !orderDetails) {
       successMessage.innerText = "Please fill in all fields.";
       submitBtn.disabled = false;
       submitBtn.innerHTML = "Send Order";
@@ -1445,6 +1438,7 @@ document.addEventListener("DOMContentLoaded", () => {
     doc.setFontSize(12);
     doc.text(`Customer: ${name}`, 20, 40);
     doc.text(`Email: ${email}`, 20, 50);
+    doc.text(`Whatsapp Number: ${whatsappnumber}`, 20, 40);//whatsapp
     doc.text("Order Details:", 20, 70);
     const lines = doc.splitTextToSize(orderDetails, 170);
     doc.text(lines, 20, 80);
@@ -1514,4 +1508,4 @@ document.addEventListener("DOMContentLoaded", () => {
   popupClose.addEventListener("click", () => popup.style.display = "none");
   popup.addEventListener("click", e => { if (e.target === popup) popup.style.display = "none"; });
 
-});
+}); please whats wrong

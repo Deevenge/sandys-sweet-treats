@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
     doc.save("Sandy_Order_Invoice.pdf");
 
     emailjs.send("service_5x43lc8", "template_gk7slp7", {
-      name, email, order_details: orderDetails, title: "New Order from Website"
+      name, email, whatsappnumber, order_details: orderDetails, title: "New Order from Website"
     }).then(() => {
       successMessage.innerText = "Order sent successfully! Invoice downloaded.";
       form.reset();
