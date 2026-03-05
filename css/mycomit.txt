@@ -1,3 +1,1517 @@
 git add .
-git commit -m "new gui change" 
+git commit -m "new video added" 
 git push
+
+bro i wanna change my about section from this:<section id="about" class="about">
+  <div class="container about-flex">
+
+    <!-- Text Section -->
+    <div class="about-text">
+      <h2>About Sandy</h2>
+
+      <p>Welcome to <span class="highlight">Sandy's Sweet Treats</span>! Founded by Sandile Mola, a passionate baker from South Africa, our goal is simple: to bring a little sweetness to your day.</p>
+
+      <!-- Recipe-style list -->
+<ul class="about-list">
+  <li>🥐 We bake soft, buttery scones, baked fresh daily</li>
+  <li>🍪 Not forgetting our crunchy, delicious cookies perfect for snacking</li>
+  <li>🧁 We also provide fluffy muffins, moist and flavorful</li>
+  <li>❤️ Handmade with love and finest ingredients</li>
+  <li>🎥 Follow us on TikTok for treats in action!</li>
+</ul>
+<br></br>
+      <p>Whether it’s a cozy breakfast, a midday snack, or sharing with friends and family, Sandy's Sweet Treats is all about creating moments of joy through baked goodness.</p>
+
+    </div>
+
+    <!-- Image Section -->
+    <div class="about-img">
+      <img src="imgs/sandlogo.gif" alt="Sandy baking scones" />
+    </div>
+
+  </div>
+</section> to something nice you can even remove those emojis and icon but the new about information is:Welcome to *Sandy’s Sweet Treats*– where every bite carries a story. 
+
+Founded by Sandile Mola, a passionate 26-year-old self-taught baker from the rural heart of Bushbuckridge, Mpumalanga, now based in Gauteng.  
+
+Baking began as more than just a skill for Sandile – it was a way to connect with his late mother, who delighted in his early “mistakes” as he taught himself the craft. What started as a way to support his student journey has grown into a heartfelt mission: to share joy, comfort, and a little sweetness with every creation.  
+
+At Sandy’s Sweet Treats, each cake, pastry, and dessert is made with care, resilience, and love – inspired by humble beginnings and driven by the dream of bringing happiness to your day.  
+
+Sandy’s Sweet Treats – Baked with love, shared with joy......... the about section desgin it in a nice way better than now please, here is my index:<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sandy's Sweet Treats - Freshly baked scones, cookies and muffins made with love.">
+<title>Sandy's Sweet Treats | Freshly Baked Goodness</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+
+    <div class="logo">
+      <img src="imgs/sandlogo(1).png" alt="Sandy's Sweet Treats">
+    </div>
+
+    <button class="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>   
+        <li><a href="#gallery">Gallery</a></li> 
+        <li><a href="#about">About</a></li>       
+        <li><a href="#products">Our Treats</a></li>
+        
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="imgs/b2_1.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1>Sweet Luxury Delights</h1>
+    <p>Freshly baked scones, cookies & muffins made with love</p>
+    <a href="#products" class="btn">Explore Menu</a>
+  </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section id="gallery" class="gallery">
+
+  <div class="container">
+
+    <h2>Behind The Sweet Moments</h2>
+
+    <div class="gallery-grid signature-gallery">
+
+      <div class="gallery-card" data-treat="Scones">
+        <div class="gallery-card-img" id="galleryScones"></div>
+        <h3>Read more</h3>
+      </div>
+
+      <div class="gallery-card" data-treat="Classic Cookies">
+        <div class="gallery-card-img" id="galleryCookies"></div>
+        <h3>Read more</h3>
+      </div>
+
+      <div class="gallery-card" data-treat="Fluffy Muffins">
+        <div class="gallery-card-img" id="galleryMuffins"></div>
+        <h3>Read more</h3>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="about" class="about">
+  <div class="container about-flex">
+
+    <!-- Text Section -->
+    <div class="about-text">
+      <h2>About Sandy</h2>
+
+      <p>Welcome to <span class="highlight">Sandy's Sweet Treats</span>! Founded by Sandile Mola, a passionate baker from South Africa, our goal is simple: to bring a little sweetness to your day.</p>
+
+      <!-- Recipe-style list -->
+<ul class="about-list">
+  <li>🥐 We bake soft, buttery scones, baked fresh daily</li>
+  <li>🍪 Not forgetting our crunchy, delicious cookies perfect for snacking</li>
+  <li>🧁 We also provide fluffy muffins, moist and flavorful</li>
+  <li>❤️ Handmade with love and finest ingredients</li>
+  <li>🎥 Follow us on TikTok for treats in action!</li>
+</ul>
+<br></br>
+      <p>Whether it’s a cozy breakfast, a midday snack, or sharing with friends and family, Sandy's Sweet Treats is all about creating moments of joy through baked goodness.</p>
+
+    </div>
+
+    <!-- Image Section -->
+    <div class="about-img">
+      <img src="imgs/sandlogo.gif" alt="Sandy baking scones" />
+    </div>
+
+  </div>
+</section>
+
+<section id="products" class="products">
+  <div class="container">
+    <h2>Our Signature Treats</h2>
+    <h5>click on your fave menu to start ordering...<h5>
+
+    <div class="product-grid">
+
+      <div class="card">
+        <div class="card-img scones"></div>
+        <h3>Scones</h3>
+        <p>Soft, golden and perfect with jam or cream.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-img cookies"></div>
+        <h3>Classic Cookies</h3>
+        <p>Crunchy outside, chewy inside. Chocolate chip heaven.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-img muffins"></div>
+        <h3>Fluffy Muffins</h3>
+        <p>Moist, flavorful and baked fresh every morning.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION (HIDDEN BY DEFAULT) -->
+<section id="contact" class="contact hidden-contact">
+
+  <div class="container">
+
+    <h2>Place Your Order</h2>
+
+    <form id="orderForm">
+
+      <input type="text" id="customerName" placeholder="Your Name" required>
+      <input type="email" id="customerEmail" placeholder="Your Email" required>
+      <textarea id="orderMessage" placeholder="What would you like to order?" required></textarea>
+
+      <button type="submit" class="btn" id="submitBtn">
+        Send Order <span class="dots"></span>
+      </button>
+
+    </form>
+
+    <div id="orderPreview" style="display:none; margin-top:20px;">
+      <h3>Order Summary</h3>
+      <p id="summaryText"></p>
+    </div>
+
+    <p id="successMessage" class="success"></p>
+
+  </div>
+
+</section>
+</section>
+
+<footer>
+  <p>© 2026 Sandy's Sweet Treats. Baked with love.</p>
+</footer>
+
+<!-- MENU POPUP -->
+<div id="menuPopup">
+  <div class="menu-content">
+    <button id="closePopup">&times;</button>
+    <div class="menu-header">
+      <img src="imgs/sandlogo.gif" alt="Logo">
+      <h3 id="menuTitle"></h3>
+    </div>
+    <ul id="menuItems"></ul>
+    <button id="finishOrder" class="btn">Finish Order</button>
+  </div>
+</div>
+
+<!-- CUSTOM ALERT MODAL -->
+<div id="customAlert">
+  <div class="alert-content">
+    <p id="alertText"></p>
+    <div class="alert-buttons">
+      <button id="continueOrdering" class="btn">
+        Continue Ordering
+      </button>
+      <button id="sendOrder" class="btn">
+        Send Order
+      </button>
+    </div>
+  </div>
+</div>
+<!-- GALLERY POPUP -->
+<div class="gallery-popup" id="galleryPopup">
+  <div class="gallery-popup-content">
+
+    <span class="gallery-close" id="galleryClose">&times;</span>
+
+    <div class="gallery-popup-img" id="popupImage"></div>
+
+    <div class="gallery-popup-text">
+      <h2 id="popupTitle"></h2>
+      <p id="popupDescription"></p>
+    </div>
+
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>,css::root {
+  --primary:#0f172a; 
+  --secondary:#fff4e6;
+  --dark:#6b4226;
+  --light:#ffffff;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--secondary);
+  color:var(--dark);
+}
+
+.container{
+  width:90%;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* HEADER */
+header{
+  background:#0f172a;
+  height:100px;
+  padding:0 6%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:sticky; /* sticky header */
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10000;
+}
+
+header .container {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+}
+
+/* LOGO */
+.logo img{
+  height:120px;
+  width:auto;
+  display:block;
+  transition:0.3s;
+}
+
+.logo img:hover{
+  transform:scale(1.05);
+}
+
+/* NAVIGATION */
+nav{
+  display:flex;
+  z-index:10002;
+}
+
+nav ul{
+  display:flex;
+  gap:35px;
+  list-style:none;
+  align-items:center;
+  margin:0;
+  padding:0;
+}
+
+nav ul li a{
+  color:#c89b3c;
+  text-decoration:none;
+  font-weight:500;
+  font-size:15px;
+  letter-spacing:1px;
+  position:relative;
+  transition:0.3s;
+}
+
+nav ul li a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0%;
+  height:2px;
+  background:#e5bb5c;
+  transition:0.3s;
+}
+
+nav ul li a:hover{
+  color:#e5bb5c;
+}
+
+nav ul li a:hover::after{
+  width:100%;
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  color:white;
+}
+
+.bg-video{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:translate(-50%,-50%);
+  z-index:0;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.55);
+  z-index:1;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:700px;
+  animation:fadeUp 1.2s ease;
+}
+
+.hero h1{
+  font-size:3rem;
+  margin-bottom:15px;
+  letter-spacing:1px;
+}
+
+.hero p{
+  font-size:1.2rem;
+  margin-bottom:25px;
+}
+
+/* BUTTON */
+.btn{
+  background:var(--primary);
+  color:white;
+  padding:12px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover{
+  background:#ff5c7a;
+  transform:translateY(-3px);
+}
+
+/* PRODUCTS */
+.products{
+  padding:80px 0;
+  text-align:center;
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card-img{
+  height:180px;
+  border-radius:15px;
+  margin-bottom:15px;
+  background-size:cover;
+  background-position:center;
+}
+
+/* PRODUCT IMAGES */
+.scones{
+  background-image:url(../imgs/gallery/co5.png);
+}
+
+.cookies{
+  background-image:url(../imgs/gallery/co4.png);
+}
+
+.muffins{
+  background-image:url(../imgs/gallery/muffs.png);
+}
+
+/* ABOUT */
+.about{
+  padding:70px 0;
+  text-align:center;
+}
+
+/* CONTACT */
+.contact{
+  padding:80px 0;
+  text-align:center;
+}
+
+form{
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  max-width:500px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+input,textarea{
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-family:inherit;
+}
+
+textarea{
+  resize:none;
+  height:120px;
+}
+
+.success{
+  margin-top:15px;
+  color:green;
+  font-weight:600;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  background:white;
+  margin-top:50px;
+}
+
+/* DOTS LOADING */
+.dots::after{
+  content:'';
+  animation:dots 1.5s steps(3,end) infinite;
+}
+
+@keyframes dots{
+  0%{content:'';}
+  33%{content:'.';}
+  66%{content:'..';}
+  100%{content:'...';}
+}
+
+/* HERO ANIMATION */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* HAMBURGER BUTTON */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content:space-between;
+  width:25px;
+  height:20px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  position:relative;
+  z-index:10007; /* above everything */
+}
+
+.hamburger span{
+  display:block;
+  height:3px;
+  width:100%;
+  background:#c89b3c;
+  border-radius:3px;
+}
+
+/* MOBILE FIXES */
+@media screen and (max-width:768px){
+
+  header {
+    height: auto;
+    padding: 10px 6%;
+  }
+
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* vertical align logo & hamburger */
+  }
+
+  .logo img{
+    height:100px; /* slightly bigger than before */
+  }
+
+  .hamburger{
+    display:flex; /* show hamburger */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    z-index:10003; /* above nav/video */
+    /* removed absolute positioning so it aligns with logo */
+  }
+
+
+  /* HERO adjustments */
+  .hero{
+    height:60vh;
+  }
+
+  .bg-video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    top:0;
+    left:0;
+    transform:none;
+    z-index:0;
+  }
+
+  .hero-content{
+    max-width:90%;
+    position:relative;
+    z-index:2;
+    padding-top:20px;
+  }
+
+  /* NAVIGATION SLIDE-IN */
+  nav{
+    position:fixed;
+    top:0;
+    right:0;
+    width:70%;
+    height:100vh;
+    background:rgba(15,23,42,0.95);
+    transform:translateX(100%);
+    transition:transform 0.3s ease;
+    flex-direction:column;
+    padding-top:100px;
+    z-index:10002;
+    overflow-y:auto;
+  }
+
+  nav.active{
+    transform:translateX(0);
+  }
+
+  nav ul{
+    flex-direction:column;
+    gap:25px;
+    padding-left:20px;
+  }
+
+  nav ul li a{
+    font-size:18px;
+    color:#c89b3c;
+  }
+}
+/* MENU POPUP STYLES */
+/* MENU POPUP */
+#menuPopup {
+  display: none;
+  position: fixed;
+  inset:0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 10005;
+}
+
+/* ================= MINI MENU CARDS INSIDE POPUP ================= */
+.menu-item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--secondary);
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  width: 100%;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.menu-item-card:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.menu-item-card p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  flex: 1;
+}
+
+.menu-item-card .btn {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 20px;
+  cursor: pointer;
+  background: var(--primary);
+  color: var(--light);
+  border: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.menu-item-card .btn:hover {
+  background: #ff5c7a;
+  transform: translateY(-2px);
+}
+
+/* OPTIONAL: special buttons like "Check Oven" or "Remove" */
+.menu-item-card .btn.remove-btn {
+  background: #c0392b;
+}
+
+.menu-item-card .btn.remove-btn:hover {
+  background: #e74c3c;
+}
+
+.menu-item-card .btn.check-oven-btn {
+  background: #27ae60;
+}
+
+.menu-item-card .btn.check-oven-btn:hover {
+  background: #2ecc71;
+}
+
+/* ================= MENU POPUP CONTAINER ================= */
+.menu-content {
+  background: var(--light);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* MENU HEADER */
+.menu-content .menu-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.menu-content .menu-header img {
+  height: 60px;
+  margin-bottom: 12px;
+}
+
+.menu-content #menuTitle {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* MENU ITEMS LIST */
+.menu-content #menuItems {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+  width: 100%;
+}
+
+.menu-content #menuItems li {
+  padding: 12px;
+  margin-bottom: 10px;
+  background: var(--secondary);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+}
+
+.menu-content #menuItems li:hover {
+  background: #e0e0e0;
+}
+
+/* CLOSE BUTTON */
+#closePopup {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#closePopup:hover {
+  transform: scale(1.2);
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media screen and (max-width:768px) {
+  .menu-content {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .menu-item-card {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .menu-item-card .btn {
+    width: 80%;
+  }
+}
+/* CUSTOM ALERT STYLES */
+#customAlert {
+  display: none;
+  position: fixed;
+  inset:0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 10006;
+}
+
+.alert-content {
+  background: var(--light);
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.alert-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+/* HIDDEN CONTACT SECTION */
+.hidden-contact {
+  display: none;
+}
+
+.show-contact {
+  display: block;
+  animation: fadeUp 0.6s ease;
+}
+/* ================= GALLERY ================= */
+
+.gallery {
+  padding: 80px 0;
+  background: #fffaf5;
+  text-align: center;
+}
+
+.gallery h2 {
+  margin-bottom: 40px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.gallery-item.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.gallery-item img,
+.gallery-item video {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+  transform: scale(1.05);
+}
+
+/* LIGHTBOX */
+
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lightbox-content img,
+.lightbox-content video {
+  max-width: 70%;
+  max-height: 70vh;
+  border-radius: 12px;
+}
+
+#closeLightbox {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+/* SIGNATURE SWITCHING CARDS */
+
+.signature-gallery {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.gallery-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.gallery-card:hover {
+  transform: translateY(-10px);
+}
+
+.gallery-card-img {
+  height: 250px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 15px;
+  transition: background-image 1s ease-in-out;
+}
+
+.gallery-card h3 {
+  margin-top: 10px;
+}
+
+/* POPUP OVERLAY */
+.gallery-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* POPUP BOX */
+.gallery-popup-content {
+  background: white;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 25px;
+  padding: 30px;
+  position: relative;
+  animation: popIn 0.4s ease forwards;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* CLOSE BUTTON */
+.gallery-close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* IMAGE */
+.gallery-popup-img {
+  height: 350px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+/* TEXT */
+.gallery-popup-text h2 {
+  margin-bottom: 10px;
+}
+
+.about {
+  padding: 60px 20px;
+  background-color: #fff8f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.about-flex {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap; /* stacks on small screens */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1 1 500px;
+}
+
+.about-text h2 {
+  font-size: 36px;
+  margin-bottom: 25px;
+  color: var(--dark)
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.about-list {
+  list-style: none; /* remove default bullets */
+  padding-left: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.about-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* optional: make emoji bigger */
+.about-list li::before {
+  content: ''; /* no bullet needed since emoji is inline */
+}
+
+.highlight {
+  color: #e67e22;
+  font-weight: 600;
+}
+
+.about-img {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.about-img img {
+  max-width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+/* ================= MOBILE IMPROVEMENTS ================= */
+
+@media screen and (max-width:768px){
+
+  .container{
+    width:92%;
+  }
+
+  h1{
+    font-size:2rem;
+  }
+
+  h2{
+    font-size:1.6rem;
+  }
+
+  .hero p{
+    font-size:1rem;
+  }
+
+  /* cards stack nicely */
+  .product-grid{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr;
+  }
+
+  .signature-gallery{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-card-img{
+    height:220px;
+  }
+
+  /* popup responsive */
+  .gallery-popup-content{
+    width:92%;
+    padding:20px;
+  }
+
+  .gallery-popup-img{
+    height:250px;
+  }
+
+  /* about section stacks */
+  .about-flex{
+    flex-direction:column;
+    text-align:center;
+    gap:30px;
+  }
+
+  .about-text p{
+    font-size:16px;
+  }
+
+  /* form mobile */
+  form{
+    width:100%;
+  }
+
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+section{
+  scroll-margin-top: 100px;
+},js:// ===============================
+// EMAILJS INIT
+// ===============================
+(function () {
+  emailjs.init("7t3SmVwZrfxAZCFfx");
+})();
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ===============================
+  // MOBILE HAMBURGER MENU
+  // ===============================
+  const hamburger = document.querySelector(".hamburger");
+  const nav = document.querySelector("nav");
+
+  if (hamburger && nav) {
+    hamburger.addEventListener("click", () => nav.classList.toggle("active"));
+    document.querySelectorAll("nav ul li a").forEach(link => {
+      link.addEventListener("click", () => nav.classList.remove("active"));
+    });
+  }
+
+  // ===============================
+  // MENU VARIABLES
+  // ===============================
+  const menuPopup = document.getElementById("menuPopup");
+  const menuTitle = document.getElementById("menuTitle");
+  const menuItems = document.getElementById("menuItems");
+  const closePopup = document.getElementById("closePopup");
+  const finishOrderBtn = document.getElementById("finishOrder");
+
+  const orderTextarea = document.querySelector("#orderForm textarea");
+
+  // LOCK the order textarea via JS
+  orderTextarea.readOnly = true;
+
+  // ADD MODERN STYLING via JS (optional override for older style)
+  Object.assign(orderTextarea.style, {
+    backgroundColor: "#fff4e6",
+    border: "1px solid #ff8fa3",
+    borderRadius: "10px",
+    color: "#6b4226",
+    fontFamily: "'Poppins', sans-serif",
+    fontSize: "1rem",
+    padding: "12px 15px",
+    resize: "none",
+    minHeight: "150px",
+    boxShadow: "inset 0 2px 5px rgba(0,0,0,0.05)",
+    transition: "all 0.3s ease"
+  });
+
+  orderTextarea.addEventListener("focus", () => {
+    orderTextarea.style.outline = "none";
+    orderTextarea.style.borderColor = "#ff6f91";
+    orderTextarea.style.boxShadow = "0 0 10px rgba(255,143,163,0.3)";
+  });
+  orderTextarea.addEventListener("blur", () => {
+    orderTextarea.style.borderColor = "#ff8fa3";
+    orderTextarea.style.boxShadow = "inset 0 2px 5px rgba(0,0,0,0.05)";
+  });
+
+  const customAlert = document.getElementById("customAlert");
+  const alertText = document.getElementById("alertText");
+  const continueBtn = document.getElementById("continueOrdering");
+  const sendOrderBtn = document.getElementById("sendOrder");
+
+  const contactSection = document.getElementById("contact");
+
+  let cart = [];
+  let cartTotal = 0;
+
+  const menus = {
+    "Scones": ["5 Liters: R250", "10 Liters: R440", "20 Liters: R600"],
+    "Classic Cookies": ["5 Liters: R200", "10 Liters: R380", "20 Liters: R550"],
+    "Fluffy Muffins": ["5 Liters: R220", "10 Liters: R400", "20 Liters: R580"]
+  };
+
+  // ===============================
+  // HELPER FUNCTIONS
+  // ===============================
+  const parsePrice = priceStr => Number(priceStr.replace(/[^\d.]/g, ""));
+
+  const revealContactSection = () => {
+    contactSection.classList.remove("hidden-contact");
+    contactSection.classList.add("show-contact");
+    setTimeout(() => contactSection.scrollIntoView({ behavior: "smooth" }), 200);
+  };
+
+  // UPDATE LOCKED ORDER TEXTAREA
+  const updateOrderTextarea = () => {
+    let text = cart.join("\n");
+    if (cartTotal > 0) text += `\n--------------------------\nTotal: R${cartTotal}`;
+    orderTextarea.value = text;
+  };
+
+  const updatePopupTotal = () => {
+    let totalDiv = document.getElementById("popupTotal");
+    if (!totalDiv) {
+      totalDiv = document.createElement("div");
+      totalDiv.id = "popupTotal";
+      totalDiv.style.fontWeight = "bold";
+      totalDiv.style.marginTop = "10px";
+      menuItems.parentElement.appendChild(totalDiv);
+    }
+    totalDiv.innerText = `Total: R${cartTotal}`;
+  };
+
+  // ===============================
+  // PRODUCT CARD CLICK
+  // ===============================
+  document.querySelectorAll(".product-grid .card").forEach(card => {
+    card.addEventListener("click", () => {
+      const treatName = card.querySelector("h3").innerText;
+      openMenu(treatName);
+    });
+  });
+
+  // ===============================
+  // OPEN MENU FUNCTION
+  // ===============================
+  function openMenu(treatName) {
+
+    menuTitle.innerText = treatName;
+    menuItems.innerHTML = "";
+
+    let ovenContainer = document.getElementById("ovenContainer");
+    if (!ovenContainer) {
+      ovenContainer = document.createElement("div");
+      ovenContainer.id = "ovenContainer";
+      ovenContainer.style.marginTop = "20px";
+      ovenContainer.style.padding = "10px";
+      ovenContainer.style.borderTop = "2px dashed #ff8fa3";
+      ovenContainer.style.maxHeight = "250px";
+      ovenContainer.style.overflowY = "auto";
+      ovenContainer.style.backgroundColor = "#fff4e6";
+      ovenContainer.style.borderRadius = "8px";
+      menuItems.parentElement.appendChild(ovenContainer);
+    }
+
+    menus[treatName].forEach(item => {
+      const [size, price] = item.split(":");
+
+      const itemCard = document.createElement("div");
+      itemCard.classList.add("menu-item-card");
+
+      const itemText = document.createElement("p");
+      itemText.innerText = `${size.trim()} - ${price.trim()}`;
+      itemText.style.margin = "0";
+
+      const addBtn = document.createElement("button");
+      addBtn.classList.add("btn");
+      addBtn.innerText = "Add to Oven";
+
+      addBtn.addEventListener("click", () => {
+
+        const orderText = `${treatName} - ${size.trim()} - ${price.trim()}`;
+        cart.push(orderText);
+        cartTotal += parsePrice(price.trim());
+
+        // UPDATE LOCKED ORDER TEXTAREA
+        updateOrderTextarea();
+        updatePopupTotal();
+
+        alertText.innerText = `${orderText} added to your oven!`;
+        customAlert.style.display = "flex";
+
+        renderOven(true);
+      });
+
+      itemCard.appendChild(itemText);
+      itemCard.appendChild(addBtn);
+      menuItems.appendChild(itemCard);
+    });
+
+    function renderOven(animate = false) {
+      ovenContainer.innerHTML = "<h4 style='margin:0 0 10px 0;'>🍪 Your Oven:</h4>";
+      if (cart.length === 0) {
+        ovenContainer.innerHTML += "<p style='margin:0;'>Your oven is empty.</p>";
+        return;
+      }
+
+      cart.forEach((itemText, index) => {
+        const ovenCard = document.createElement("div");
+        ovenCard.classList.add("menu-item-card");
+        ovenCard.style.display = "flex";
+        ovenCard.style.justifyContent = "space-between";
+        ovenCard.style.alignItems = "center";
+        ovenCard.style.padding = "6px 8px";
+        ovenCard.style.marginBottom = "5px";
+        ovenCard.style.backgroundColor = "#fff8f0";
+        ovenCard.style.borderRadius = "5px";
+        ovenCard.style.boxShadow = "0 1px 3px rgba(0,0,0,0.1)";
+        ovenCard.style.transition = "all 0.4s ease";
+
+        if (animate && index === cart.length - 1) {
+          ovenCard.style.opacity = "0";
+          ovenCard.style.transform = "translateY(-20px)";
+          setTimeout(() => {
+            ovenCard.style.opacity = "1";
+            ovenCard.style.transform = "translateY(0)";
+          }, 50);
+        }
+
+        const textP = document.createElement("p");
+        textP.innerText = itemText;
+        textP.style.margin = "0";
+        textP.style.fontSize = "0.95rem";
+
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.add("btn");
+        removeBtn.innerText = "❌";
+        removeBtn.style.padding = "2px 6px";
+        removeBtn.style.fontSize = "0.85rem";
+
+        removeBtn.addEventListener("click", () => {
+          cartTotal -= parsePrice(itemText.split(" - ").pop());
+          cart.splice(index, 1);
+          updateOrderTextarea();
+          updatePopupTotal();
+          renderOven();
+        });
+
+        ovenCard.appendChild(textP);
+        ovenCard.appendChild(removeBtn);
+        ovenContainer.appendChild(ovenCard);
+      });
+
+      updatePopupTotal();
+    }
+
+    renderOven();
+    updatePopupTotal();
+    menuPopup.style.display = "flex";
+  }
+
+  // ===============================
+  // CLOSE MENU
+  // ===============================
+  if (closePopup) closePopup.addEventListener("click", () => menuPopup.style.display = "none");
+  if (menuPopup) menuPopup.addEventListener("click", e => { if (e.target === menuPopup) menuPopup.style.display = "none"; });
+
+  // ===============================
+  // FINISH ORDER
+  // ===============================
+  finishOrderBtn.addEventListener("click", () => {
+    menuPopup.style.display = "none";
+    revealContactSection();
+  });
+
+  continueBtn.addEventListener("click", () => {
+    customAlert.style.display = "none";
+    document.getElementById("products").scrollIntoView({ behavior: "smooth" });
+  });
+
+  sendOrderBtn.addEventListener("click", () => {
+    customAlert.style.display = "none";
+    menuPopup.style.display = "none";
+    revealContactSection();
+  });
+
+  // ===============================
+  // FORM SUBMIT
+  // ===============================
+  const form = document.getElementById("orderForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const successMessage = document.getElementById("successMessage");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "Sending...";
+    successMessage.innerText = "";
+
+    const name = form.querySelector('input[type="text"]').value.trim();
+    const email = form.querySelector('input[type="email"]').value.trim();
+    const orderDetails = orderTextarea.value.trim(); // READ ONLY, locked
+
+    if (!name || !email || !orderDetails) {
+      successMessage.innerText = "Please fill in all fields.";
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "Send Order";
+      return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.setFontSize(18);
+    doc.text("Sandy's Sweet Treats", 20, 20);
+    doc.setFontSize(12);
+    doc.text(`Customer: ${name}`, 20, 40);
+    doc.text(`Email: ${email}`, 20, 50);
+    doc.text("Order Details:", 20, 70);
+    const lines = doc.splitTextToSize(orderDetails, 170);
+    doc.text(lines, 20, 80);
+    doc.save("Sandy_Order_Invoice.pdf");
+
+    emailjs.send("service_5x43lc8", "template_gk7slp7", {
+      name, email, order_details: orderDetails, title: "New Order from Website"
+    }).then(() => {
+      successMessage.innerText = "Order sent successfully! Invoice downloaded.";
+      form.reset();
+      cart = []; cartTotal = 0; orderTextarea.value = "";
+      const popupTotal = document.getElementById("popupTotal"); if (popupTotal) popupTotal.innerText = "";
+      const ovenContainer = document.getElementById("ovenContainer"); if (ovenContainer) ovenContainer.innerHTML = "";
+      submitBtn.disabled = false; submitBtn.innerHTML = "Send Order";
+    }).catch(err => {
+      console.error(err);
+      successMessage.innerText = "Oops! Something went wrong.";
+      submitBtn.disabled = false; submitBtn.innerHTML = "Send Order";
+    });
+  });
+
+  // ===============================
+  // GALLERY AUTO IMAGE SWITCHING
+  // ===============================
+  const galleryImages = {
+    galleryScones: ["imgs/gallery/nu3.png","imgs/gallery/nu2.png","imgs/gallery/co1.png"],
+    galleryCookies: ["imgs/gallery/co3.png","imgs/gallery/co2.png","imgs/gallery/mf2.jpg"],
+    galleryMuffins: ["imgs/gallery/nu1.png","imgs/gallery/c2.png","imgs/gallery/mf3.jpg"]
+  };
+  Object.keys(galleryImages).forEach(id => {
+    const element = document.getElementById(id);
+    if (!element) return;
+    let index = 0;
+    element.style.backgroundImage = `url(${galleryImages[id][index]})`;
+    setInterval(() => {
+      index = (index + 1) % galleryImages[id].length;
+      element.style.backgroundImage = `url(${galleryImages[id][index]})`;
+    }, 5000);
+  });
+
+  // ===============================
+  // GALLERY POPUP
+  // ===============================
+  const popup = document.getElementById("galleryPopup");
+  const popupImage = document.getElementById("popupImage");
+  const popupTitle = document.getElementById("popupTitle");
+  const popupDescription = document.getElementById("popupDescription");
+  const popupClose = document.getElementById("galleryClose");
+
+  const treatInfo = {
+    Scones: { desc: "Our homemade scones are baked fresh daily using traditional recipes." },
+    "Classic Cookies": { desc: "Our classic cookies are rich, chewy, and full of flavor." },
+    "Fluffy Muffins": { desc: "Our muffins are light, moist, and bursting with sweetness." }
+  };
+
+  document.querySelectorAll(".gallery-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const treatName = card.getAttribute("data-treat");
+      popupTitle.innerText = treatName;
+      popupDescription.innerText = treatInfo[treatName].desc;
+      const cardImage = card.querySelector(".gallery-card-img");
+      popupImage.style.backgroundImage = cardImage.style.backgroundImage;
+      popup.style.display = "flex";
+    });
+  });
+
+  popupClose.addEventListener("click", () => popup.style.display = "none");
+  popup.addEventListener("click", e => { if (e.target === popup) popup.style.display = "none"; });
+
+});

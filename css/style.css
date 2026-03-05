@@ -214,11 +214,7 @@ nav ul li a:hover::after{
   background-image:url(../imgs/gallery/muffs.png);
 }
 
-/* ABOUT */
-.about{
-  padding:70px 0;
-  text-align:center;
-}
+
 
 /* CONTACT */
 .contact{
@@ -748,75 +744,76 @@ footer{
 .gallery-popup-text h2 {
   margin-bottom: 10px;
 }
+/* ===============================
+   ABOUT SECTION (CLEAN VERSION)
+================================ */
 
-.about {
-  padding: 60px 20px;
-  background-color: #fff8f0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-}
-
-.about-flex {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  flex-wrap: wrap; /* stacks on small screens */
-  max-width: 1200px;
-  margin: 0 auto;
+.about{
+  padding:80px 0;
+  background:#fff8f0;
 }
 
-.about-text {
-  flex: 1 1 500px;
+.about-flex{
+  display:flex;
+  align-items:center;
+  gap:60px;
+  flex-wrap:wrap;
 }
 
-.about-text h2 {
-  font-size: 36px;
-  margin-bottom: 25px;
-  color: var(--dark)
+.about-img{
+  flex:1 1 400px;
+  text-align:center;
 }
 
-.about-text p {
-  font-size: 18px;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-.about-list {
-  list-style: none; /* remove default bullets */
-  padding-left: 0;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  font-size: 18px;
-  line-height: 1.7;
+.about-img img{
+  width:100%;
+  max-width:420px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
 }
 
-.about-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+.about-text{
+  flex:1 1 500px;
 }
 
-/* optional: make emoji bigger */
-.about-list li::before {
-  content: ''; /* no bullet needed since emoji is inline */
+.about-text h2{
+  font-size:34px;
+  margin-bottom:20px;
+  color:var(--dark);
 }
 
-.highlight {
-  color: #e67e22;
-  font-weight: 600;
+.about-intro{
+  font-size:20px;
+  font-weight:500;
+  margin-bottom:20px;
 }
 
-.about-img {
-  flex: 1 1 400px;
-  text-align: center;
+.about-story p{
+  margin-bottom:16px;
+  line-height:1.8;
+  font-size:17px;
 }
 
-.about-img img {
-  max-width: 100%;
-  border-radius: 15px;
-  object-fit: cover;
+.about-quote{
+  background:#fff4e6;
+  border-left:5px solid #e67e22;
+  padding:18px 20px;
+  margin:25px 0;
+  border-radius:10px;
+  font-style:italic;
+  font-size:17px;
 }
+
+.about-ending{
+  font-size:18px;
+  margin-top:10px;
+}
+
+.highlight{
+  color:#e67e22;
+  font-weight:600;
+}
+
 
 /* ================= MOBILE IMPROVEMENTS ================= */
 
