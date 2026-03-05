@@ -1,5 +1,5 @@
 git add .
-git commit -m "fixed sending error" 
+git commit -m "undone errors" 
 git push
 
 bro my thing is no longer sendingemail at all or creating pdf
