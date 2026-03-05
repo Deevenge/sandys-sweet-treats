@@ -164,7 +164,7 @@ nav ul li a:hover::after{
 }
 
 .btn:hover{
-  background:#ff5c7a;
+  background:#c89b3c;
   transform:translateY(-3px);
 }
 
@@ -203,11 +203,11 @@ nav ul li a:hover::after{
 
 /* PRODUCT IMAGES */
 .scones{
-  background-image:url(../imgs/gallery/co5.png);
+  background-image:url(../imgs/new/scones3.jpg);
 }
 
 .cookies{
-  background-image:url(../imgs/gallery/co4.png);
+  background-image:url(../imgs/new/coockie1.jpg);
 }
 
 .muffins{
@@ -437,7 +437,7 @@ footer{
 }
 
 .menu-item-card .btn:hover {
-  background: #ff5c7a;
+  background: #c89b3c;;
   transform: translateY(-2px);
 }
 

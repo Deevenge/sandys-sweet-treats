@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ADD MODERN STYLING via JS (optional override for older style)
   Object.assign(orderTextarea.style, {
     backgroundColor: "#fff4e6",
-    border: "1px solid #ff8fa3",
+    border: "1px solid #c89b3c",
     borderRadius: "10px",
     color: "#6b4226",
     fontFamily: "'Poppins', sans-serif",
@@ -51,11 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   orderTextarea.addEventListener("focus", () => {
     orderTextarea.style.outline = "none";
-    orderTextarea.style.borderColor = "#ff6f91";
+    orderTextarea.style.borderColor = "#c89b3c";
     orderTextarea.style.boxShadow = "0 0 10px rgba(255,143,163,0.3)";
   });
   orderTextarea.addEventListener("blur", () => {
-    orderTextarea.style.borderColor = "#ff8fa3";
+    orderTextarea.style.borderColor = "#c89b3c";
     orderTextarea.style.boxShadow = "inset 0 2px 5px rgba(0,0,0,0.05)";
   });
 
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ovenContainer.id = "ovenContainer";
       ovenContainer.style.marginTop = "20px";
       ovenContainer.style.padding = "10px";
-      ovenContainer.style.borderTop = "2px dashed #ff8fa3";
+      ovenContainer.style.borderTop = "2px dashed #c89b3c";
       ovenContainer.style.maxHeight = "250px";
       ovenContainer.style.overflowY = "auto";
       ovenContainer.style.backgroundColor = "#fff4e6";
@@ -273,9 +273,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const name = form.querySelector('input[type="text"]').value.trim();
     const email = form.querySelector('input[type="email"]').value.trim();
+    const whatsappnumber = form.querySelector('input[type="text"]').value.trim();//whatsapp
+    
     const orderDetails = orderTextarea.value.trim(); // READ ONLY, locked
 
-    if (!name || !email || !orderDetails) {
+    if (!name || !email || !whatsappnumber || !orderDetails) {
       successMessage.innerText = "Please fill in all fields.";
       submitBtn.disabled = false;
       submitBtn.innerHTML = "Send Order";
@@ -289,6 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
     doc.setFontSize(12);
     doc.text(`Customer: ${name}`, 20, 40);
     doc.text(`Email: ${email}`, 20, 50);
+    doc.text(`Whatsapp Number: ${whatsappnumber}`, 20, 40);//whatsapp
     doc.text("Order Details:", 20, 70);
     const lines = doc.splitTextToSize(orderDetails, 170);
     doc.text(lines, 20, 80);

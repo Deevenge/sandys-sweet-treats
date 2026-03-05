@@ -1,5 +1,5 @@
 git add .
-git commit -m "new video added" 
+git commit -m "new about section" 
 git push
 
 bro i wanna change my about section from this:<section id="about" class="about">
