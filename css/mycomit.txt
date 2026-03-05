@@ -1,5 +1,5 @@
 git add .
-git commit -m "added whatsapp field" 
+git commit -m "whatsapp field test" 
 git push
 
 i wanna add whatsapp number also to emailjs but its not hapening why?
