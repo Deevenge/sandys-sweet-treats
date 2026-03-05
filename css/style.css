@@ -711,6 +711,27 @@ footer{
   line-height: 1.7;
   margin-bottom: 20px;
 }
+.about-list {
+  list-style: none; /* remove default bullets */
+  padding-left: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.about-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* optional: make emoji bigger */
+.about-list li::before {
+  content: ''; /* no bullet needed since emoji is inline */
+}
 
 .highlight {
   color: #e67e22;
