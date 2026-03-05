@@ -266,49 +266,77 @@ document.addEventListener("DOMContentLoaded", () => {
   const successMessage = document.getElementById("successMessage");
 
   form.addEventListener("submit", e => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = "Sending...";
-    successMessage.innerText = "";
 
-    const name = form.querySelector('input[type="text"]').value.trim();
-    const email = form.querySelector('input[type="email"]').value.trim();
-    const orderDetails = orderTextarea.value.trim(); // READ ONLY, locked
+  e.preventDefault();
 
-    if (!name || !email || !orderDetails) {
-      successMessage.innerText = "Please fill in all fields.";
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = "Send Order";
-      return;
-    }
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = "Sending...";
+  successMessage.innerText = "";
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    doc.setFontSize(18);
-    doc.text("Sandy's Sweet Treats", 20, 20);
-    doc.setFontSize(12);
-    doc.text(`Customer: ${name}`, 20, 40);
-    doc.text(`Email: ${email}`, 20, 50);
-    doc.text("Order Details:", 20, 70);
-    const lines = doc.splitTextToSize(orderDetails, 170);
-    doc.text(lines, 20, 80);
-    doc.save("Sandy_Order_Invoice.pdf");
+  // Get values directly by ID
+  const name = document.getElementById("customerName").value.trim();
+  const email = document.getElementById("customerEmail").value.trim();
+  const whatsapp = document.getElementById("customernumber").value.trim();
+  const orderDetails = orderTextarea.value.trim();
 
-    emailjs.send("service_5x43lc8", "template_gk7slp7", {
-      name, email, order_details: orderDetails, title: "New Order from Website"
-    }).then(() => {
-      successMessage.innerText = "Order sent successfully! Invoice downloaded.";
-      form.reset();
-      cart = []; cartTotal = 0; orderTextarea.value = "";
-      const popupTotal = document.getElementById("popupTotal"); if (popupTotal) popupTotal.innerText = "";
-      const ovenContainer = document.getElementById("ovenContainer"); if (ovenContainer) ovenContainer.innerHTML = "";
-      submitBtn.disabled = false; submitBtn.innerHTML = "Send Order";
-    }).catch(err => {
-      console.error(err);
-      successMessage.innerText = "Oops! Something went wrong.";
-      submitBtn.disabled = false; submitBtn.innerHTML = "Send Order";
-    });
+  if (!name || !email || !whatsapp || !orderDetails) {
+    successMessage.innerText = "Please fill in all fields.";
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = "Send Order";
+    return;
+  }
+
+  // Create PDF
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFontSize(18);
+  doc.text("Sandy's Sweet Treats", 20, 20);
+
+  doc.setFontSize(12);
+  doc.text(`Customer: ${name}`, 20, 40);
+  doc.text(`Email: ${email}`, 20, 50);
+  doc.text(`WhatsApp: ${whatsapp}`, 20, 60);
+
+  doc.text("Order Details:", 20, 80);
+  const lines = doc.splitTextToSize(orderDetails, 170);
+  doc.text(lines, 20, 90);
+
+  doc.save("Sandy_Order_Invoice.pdf");
+
+  // Send via EmailJS
+  emailjs.send("service_5x43lc8", "template_gk7slp7", {
+    name: name,
+    email: email,
+    whatsapp: whatsapp,
+    order_details: orderDetails,
+    title: "New Order from Website"
+  })
+  .then(() => {
+    successMessage.innerText = "Order sent successfully! Invoice downloaded.";
+    form.reset();
+    cart = [];
+    cartTotal = 0;
+    orderTextarea.value = "";
+
+    const popupTotal = document.getElementById("popupTotal");
+    if (popupTotal) popupTotal.innerText = "";
+
+    const ovenContainer = document.getElementById("ovenContainer");
+    if (ovenContainer) ovenContainer.innerHTML = "";
+
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = "Send Order";
+
+  })
+  .catch(err => {
+    console.error(err);
+    successMessage.innerText = "Oops! Something went wrong.";
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = "Send Order";
   });
+
+});
 
   // ===============================
   // GALLERY AUTO IMAGE SWITCHING
