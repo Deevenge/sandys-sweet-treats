@@ -1,11 +1,11 @@
 // ===============================
 // EMAILJS INIT
 // ===============================
-(function(){
+(function () {
   emailjs.init("7t3SmVwZrfxAZCFfx");
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
   // ===============================
   // MOBILE HAMBURGER MENU
@@ -13,33 +13,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector(".hamburger");
   const nav = document.querySelector("nav");
 
-  hamburger.addEventListener("click", () => {
-    nav.classList.toggle("active");
-  });
-
-  document.querySelectorAll("nav ul li a").forEach(link => {
-    link.addEventListener("click", () => {
-      nav.classList.remove("active");
+  if (hamburger && nav) {
+    hamburger.addEventListener("click", () => {
+      nav.classList.toggle("active");
     });
-  });
+
+    document.querySelectorAll("nav ul li a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("active");
+      });
+    });
+  }
 
   // ===============================
   // MENU VARIABLES
   // ===============================
-  const menuPopup = document.getElementById('menuPopup');
-  const menuTitle = document.getElementById('menuTitle');
-  const menuItems = document.getElementById('menuItems');
-  const closePopup = document.getElementById('closePopup');
-  const finishOrderBtn = document.getElementById('finishOrder');
+  const menuPopup = document.getElementById("menuPopup");
+  const menuTitle = document.getElementById("menuTitle");
+  const menuItems = document.getElementById("menuItems");
+  const closePopup = document.getElementById("closePopup");
+  const finishOrderBtn = document.getElementById("finishOrder");
 
-  const orderTextarea = document.querySelector('#orderForm textarea');
+  const orderTextarea = document.querySelector("#orderForm textarea");
 
-  const customAlert = document.getElementById('customAlert');
-  const alertText = document.getElementById('alertText');
-  const continueBtn = document.getElementById('continueOrdering');
-  const sendOrderBtn = document.getElementById('sendOrder');
+  const customAlert = document.getElementById("customAlert");
+  const alertText = document.getElementById("alertText");
+  const continueBtn = document.getElementById("continueOrdering");
+  const sendOrderBtn = document.getElementById("sendOrder");
 
-  const contactSection = document.getElementById('contact');
+  const contactSection = document.getElementById("contact");
 
   let cart = [];
   let cartTotal = 0;
@@ -53,24 +55,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===============================
   // HELPER FUNCTIONS
   // ===============================
-
   function parsePrice(priceStr) {
-    return Number(priceStr.replace(/[^\d.]/g, ''));
+    return Number(priceStr.replace(/[^\d.]/g, ""));
   }
 
   function revealContactSection() {
-    contactSection.classList.remove('hidden-contact');
-    contactSection.classList.add('show-contact');
+    contactSection.classList.remove("hidden-contact");
+    contactSection.classList.add("show-contact");
 
     setTimeout(() => {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+      contactSection.scrollIntoView({ behavior: "smooth" });
     }, 200);
   }
 
   function updateOrderTextarea() {
-    let text = cart.join('\n');
+    let text = cart.join("\n");
 
-    if(cartTotal > 0){
+    if (cartTotal > 0) {
       text += `\n--------------------------\nTotal: R${cartTotal}`;
     }
 
@@ -78,14 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updatePopupTotal() {
+    let totalDiv = document.getElementById("popupTotal");
 
-    let totalDiv = document.getElementById('popupTotal');
-
-    if(!totalDiv){
-      totalDiv = document.createElement('div');
-      totalDiv.id = 'popupTotal';
-      totalDiv.style.fontWeight = 'bold';
-      totalDiv.style.marginTop = '10px';
+    if (!totalDiv) {
+      totalDiv = document.createElement("div");
+      totalDiv.id = "popupTotal";
+      totalDiv.style.fontWeight = "bold";
+      totalDiv.style.marginTop = "10px";
       menuItems.parentElement.appendChild(totalDiv);
     }
 
@@ -95,43 +95,36 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===============================
   // PRODUCT CARD CLICK
   // ===============================
-
-  document.querySelectorAll('.product-grid .card').forEach(card => {
-
-    card.addEventListener('click', () => {
-
-      const treatName = card.querySelector('h3').innerText;
-
+  document.querySelectorAll(".product-grid .card").forEach(card => {
+    card.addEventListener("click", () => {
+      const treatName = card.querySelector("h3").innerText;
       openMenu(treatName);
-
     });
-
   });
 
   // ===============================
   // OPEN MENU FUNCTION
   // ===============================
-
-  function openMenu(treatName){
+  function openMenu(treatName) {
 
     menuTitle.innerText = treatName;
-    menuItems.innerHTML = '';
+    menuItems.innerHTML = "";
 
     menus[treatName].forEach(item => {
 
-      const [size, price] = item.split(':');
+      const [size, price] = item.split(":");
 
-      const itemCard = document.createElement('div');
-      itemCard.classList.add('menu-item-card');
+      const itemCard = document.createElement("div");
+      itemCard.classList.add("menu-item-card");
 
-      const itemText = document.createElement('p');
+      const itemText = document.createElement("p");
       itemText.innerText = `${size.trim()} - ${price.trim()}`;
 
-      const addBtn = document.createElement('button');
-      addBtn.classList.add('btn');
-      addBtn.innerText = 'Add to Order';
+      const addBtn = document.createElement("button");
+      addBtn.classList.add("btn");
+      addBtn.innerText = "Add to Order";
 
-      addBtn.addEventListener('click', () => {
+      addBtn.addEventListener("click", () => {
 
         const orderText = `${treatName} - ${size.trim()} - ${price.trim()}`;
 
@@ -142,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePopupTotal();
 
         alertText.innerText = `${orderText} added to your order!`;
-        customAlert.style.display = 'flex';
+        customAlert.style.display = "flex";
 
       });
 
@@ -153,53 +146,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     updatePopupTotal();
-    menuPopup.style.display = 'flex';
+    menuPopup.style.display = "flex";
   }
 
   // ===============================
   // CLOSE MENU
   // ===============================
+  if (closePopup) {
+    closePopup.addEventListener("click", () => {
+      menuPopup.style.display = "none";
+    });
+  }
 
-  closePopup.addEventListener('click', () => {
-    menuPopup.style.display = 'none';
-  });
-
-  menuPopup.addEventListener('click', e => {
-    if (e.target === menuPopup) menuPopup.style.display = 'none';
-  });
+  if (menuPopup) {
+    menuPopup.addEventListener("click", e => {
+      if (e.target === menuPopup) menuPopup.style.display = "none";
+    });
+  }
 
   // ===============================
   // FINISH ORDER
   // ===============================
-
-  finishOrderBtn.addEventListener('click', () => {
-    menuPopup.style.display = 'none';
+  finishOrderBtn.addEventListener("click", () => {
+    menuPopup.style.display = "none";
     revealContactSection();
   });
 
-  continueBtn.addEventListener('click', () => {
+  continueBtn.addEventListener("click", () => {
+    customAlert.style.display = "none";
+    menuPopup.style.display = "none";
 
-    customAlert.style.display = 'none';
-    menuPopup.style.display = 'none';
-
-    document.getElementById('products')
-      .scrollIntoView({behavior:'smooth'});
-
+    document
+      .getElementById("products")
+      .scrollIntoView({ behavior: "smooth" });
   });
 
-  sendOrderBtn.addEventListener('click', () => {
-
-    customAlert.style.display = 'none';
-    menuPopup.style.display = 'none';
-
+  sendOrderBtn.addEventListener("click", () => {
+    customAlert.style.display = "none";
+    menuPopup.style.display = "none";
     revealContactSection();
-
   });
 
   // ===============================
   // FORM SUBMIT
   // ===============================
-
   const form = document.getElementById("orderForm");
   const submitBtn = document.getElementById("submitBtn");
   const successMessage = document.getElementById("successMessage");
@@ -209,12 +199,12 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = "Sending <span class='dots'></span>";
+    submitBtn.innerHTML = "Sending...";
     successMessage.innerText = "";
 
     const name = form.querySelector('input[type="text"]').value.trim();
     const email = form.querySelector('input[type="email"]').value.trim();
-    const orderDetails = form.querySelector('textarea').value.trim();
+    const orderDetails = form.querySelector("textarea").value.trim();
 
     if (!name || !email || !orderDetails) {
 
@@ -224,13 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.innerHTML = "Send Order";
 
       return;
-
     }
 
     // ===============================
     // GENERATE PDF
     // ===============================
-
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
@@ -250,47 +238,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===============================
     // EMAILJS SEND
     // ===============================
+    emailjs
+      .send("service_5x43lc8", "template_gk7slp7", {
+        name: name,
+        email: email,
+        order_details: orderDetails,
+        title: "New Order from Website"
+      })
+      .then(() => {
 
-    emailjs.send("service_5x43lc8", "template_gk7slp7", {
-      name: name,
-      email: email,
-      order_details: orderDetails,
-      title: "New Order from Website"
-    })
-    .then(() => {
+        successMessage.innerText =
+          "Order sent successfully! Invoice downloaded.";
 
-      successMessage.innerText = "Order sent successfully! Invoice downloaded.";
+        form.reset();
 
-      form.reset();
+        cart = [];
+        cartTotal = 0;
+        orderTextarea.value = "";
 
-      cart = [];
-      cartTotal = 0;
-      orderTextarea.value = '';
+        const popupTotal = document.getElementById("popupTotal");
+        if (popupTotal) popupTotal.innerText = "";
 
-      const popupTotal = document.getElementById('popupTotal');
-      if(popupTotal) popupTotal.innerText = '';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "Send Order";
+      })
+      .catch(error => {
 
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = "Send Order";
+        console.error(error);
 
-    })
-    .catch((error) => {
+        successMessage.innerText = "Oops! Something went wrong.";
 
-      console.error(error);
-
-      successMessage.innerText = "Oops! Something went wrong.";
-
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = "Send Order";
-
-    });
-
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "Send Order";
+      });
   });
 
   // ===============================
   // GALLERY AUTO IMAGE SWITCHING
   // ===============================
-
   const galleryImages = {
     galleryScones: [
       "imgs/gallery/nu3.png",
@@ -312,8 +297,9 @@ document.addEventListener('DOMContentLoaded', () => {
   Object.keys(galleryImages).forEach(id => {
 
     const element = document.getElementById(id);
-    const images = galleryImages[id];
+    if (!element) return;
 
+    const images = galleryImages[id];
     let index = 0;
 
     element.style.backgroundImage = `url(${images[index]})`;
@@ -324,22 +310,20 @@ document.addEventListener('DOMContentLoaded', () => {
       element.style.backgroundImage = `url(${images[index]})`;
 
     }, 5000);
-
   });
 
   // ===============================
   // GALLERY POPUP
   // ===============================
-
-  const popup = document.getElementById('galleryPopup');
-  const popupImage = document.getElementById('popupImage');
-  const popupTitle = document.getElementById('popupTitle');
-  const popupDescription = document.getElementById('popupDescription');
-  const popupClose = document.getElementById('galleryClose');
+  const popup = document.getElementById("galleryPopup");
+  const popupImage = document.getElementById("popupImage");
+  const popupTitle = document.getElementById("popupTitle");
+  const popupDescription = document.getElementById("popupDescription");
+  const popupClose = document.getElementById("galleryClose");
 
   const treatInfo = {
 
-    "Scones": {
+    Scones: {
       desc: "Our homemade scones are baked fresh daily using traditional recipes."
     },
 
@@ -350,35 +334,30 @@ document.addEventListener('DOMContentLoaded', () => {
     "Fluffy Muffins": {
       desc: "Our muffins are light, moist, and bursting with sweetness."
     }
-
   };
 
-  document.querySelectorAll('.gallery-card').forEach(card => {
+  document.querySelectorAll(".gallery-card").forEach(card => {
 
-    card.addEventListener('click', () => {
+    card.addEventListener("click", () => {
 
-      const treatName = card.getAttribute('data-treat');
+      const treatName = card.getAttribute("data-treat");
 
       popupTitle.innerText = treatName;
       popupDescription.innerText = treatInfo[treatName].desc;
 
-      const cardImage = card.querySelector('.gallery-card-img');
+      const cardImage = card.querySelector(".gallery-card-img");
       popupImage.style.backgroundImage = cardImage.style.backgroundImage;
 
       popup.style.display = "flex";
-
     });
-
   });
 
-  popupClose.addEventListener('click', () => {
+  popupClose.addEventListener("click", () => {
     popup.style.display = "none";
   });
 
-  popup.addEventListener('click', (e) => {
-    if(e.target === popup){
-      popup.style.display = "none";
-    }
+  popup.addEventListener("click", e => {
+    if (e.target === popup) popup.style.display = "none";
   });
 
 });
