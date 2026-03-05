@@ -273,11 +273,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const name = form.querySelector('input[type="text"]').value.trim();
     const email = form.querySelector('input[type="email"]').value.trim();
-   // const whatsappnumber = form.querySelector('input[type="text"]').value.trim();//whatsapp
+   const whatsapp = form.querySelector('input[type="tel"]').value.trim();//whatsapp
     
     const orderDetails = orderTextarea.value.trim(); // READ ONLY, locked
 
-    if (!name || !email || !orderDetails) {
+    if (!name || !email || !whatsapp || !orderDetails) {
       successMessage.innerText = "Please fill in all fields.";
       submitBtn.disabled = false;
       submitBtn.innerHTML = "Send Order";
@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
     doc.save("Sandy_Order_Invoice.pdf");
 
     emailjs.send("service_5x43lc8", "template_gk7slp7", {
-      name, email,  order_details: orderDetails, title: "New Order from Website"
+      name, email,whatsapp,  order_details: orderDetails, title: "New Order from Website"
     }).then(() => {
       successMessage.innerText = "Order sent successfully! Invoice downloaded.";
       form.reset();
