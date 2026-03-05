@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const addBtn = document.createElement("button");
       addBtn.classList.add("btn");
-      addBtn.innerText = "Add to Order";
+      addBtn.innerText = "Add to Oven"; // renamed button
 
       addBtn.addEventListener("click", () => {
 
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateOrderTextarea();
         updatePopupTotal();
 
-        alertText.innerText = `${orderText} added to your order!`;
+        alertText.innerText = `${orderText} added to your oven!`;
         customAlert.style.display = "flex";
 
       });
@@ -144,6 +144,46 @@ document.addEventListener("DOMContentLoaded", () => {
       menuItems.appendChild(itemCard);
 
     });
+
+    // Add a "Check Oven" button at bottom
+    const checkBtn = document.createElement("button");
+    checkBtn.classList.add("btn");
+    checkBtn.innerText = "Check Oven";
+    checkBtn.style.marginTop = "10px";
+
+    checkBtn.addEventListener("click", () => {
+      menuItems.innerHTML = ""; // clear items
+      if (cart.length === 0) {
+        menuItems.innerHTML = "<p>Your oven is empty.</p>";
+      } else {
+        cart.forEach((itemText, index) => {
+          const ovenCard = document.createElement("div");
+          ovenCard.classList.add("menu-item-card");
+
+          const textP = document.createElement("p");
+          textP.innerText = itemText;
+
+          const removeBtn = document.createElement("button");
+          removeBtn.classList.add("btn");
+          removeBtn.innerText = "Remove";
+
+          removeBtn.addEventListener("click", () => {
+            cartTotal -= parsePrice(itemText.split(" - ").pop());
+            cart.splice(index, 1);
+            updateOrderTextarea();
+            updatePopupTotal();
+            openMenu(treatName); // reopen menu after removal
+          });
+
+          ovenCard.appendChild(textP);
+          ovenCard.appendChild(removeBtn);
+          menuItems.appendChild(ovenCard);
+        });
+      }
+      updatePopupTotal();
+    });
+
+    menuItems.appendChild(checkBtn);
 
     updatePopupTotal();
     menuPopup.style.display = "flex";

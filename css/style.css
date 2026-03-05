@@ -404,82 +404,151 @@ footer{
   z-index: 10005;
 }
 
-/* MINI MENU CARDS INSIDE POPUP */
+/* ================= MINI MENU CARDS INSIDE POPUP ================= */
 .menu-item-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: var(--secondary);
-  padding: 10px 15px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  width: 100%;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.menu-item-card:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
 }
 
 .menu-item-card p {
   margin: 0;
   font-weight: 500;
   font-size: 14px;
+  flex: 1;
 }
 
 .menu-item-card .btn {
-  padding: 5px 12px;
+  padding: 6px 14px;
   font-size: 13px;
   border-radius: 20px;
+  cursor: pointer;
+  background: var(--primary);
+  color: var(--light);
+  border: none;
+  transition: background 0.3s, transform 0.2s;
 }
 
+.menu-item-card .btn:hover {
+  background: #ff5c7a;
+  transform: translateY(-2px);
+}
 
+/* OPTIONAL: special buttons like "Check Oven" or "Remove" */
+.menu-item-card .btn.remove-btn {
+  background: #c0392b;
+}
+
+.menu-item-card .btn.remove-btn:hover {
+  background: #e74c3c;
+}
+
+.menu-item-card .btn.check-oven-btn {
+  background: #27ae60;
+}
+
+.menu-item-card .btn.check-oven-btn:hover {
+  background: #2ecc71;
+}
+
+/* ================= MENU POPUP CONTAINER ================= */
 .menu-content {
   background: var(--light);
-  padding: 25px;
+  padding: 30px;
   border-radius: 20px;
-  max-width: 400px;
+  max-width: 450px;
   width: 90%;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
+/* MENU HEADER */
 .menu-content .menu-header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .menu-content .menu-header img {
   height: 60px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
+.menu-content #menuTitle {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* MENU ITEMS LIST */
 .menu-content #menuItems {
   list-style: none;
-  padding:0;
-  margin:15px 0;
+  padding: 0;
+  margin: 15px 0;
   width: 100%;
 }
 
 .menu-content #menuItems li {
-  padding: 10px;
-  margin-bottom: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
   background: var(--secondary);
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   transition: 0.2s;
-  text-align:center;
+  text-align: center;
 }
 
 .menu-content #menuItems li:hover {
   background: #e0e0e0;
 }
 
+/* CLOSE BUTTON */
 #closePopup {
-  background:none;
-  border:none;
+  background: none;
+  border: none;
   font-size: 1.5rem;
   position: absolute;
-  top:10px;
-  right:15px;
-  cursor:pointer;
+  top: 12px;
+  right: 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#closePopup:hover {
+  transform: scale(1.2);
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media screen and (max-width:768px) {
+  .menu-content {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .menu-item-card {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .menu-item-card .btn {
+    width: 80%;
+  }
 }
 /* CUSTOM ALERT STYLES */
 #customAlert {
