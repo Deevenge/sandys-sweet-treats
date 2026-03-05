@@ -341,50 +341,78 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // GALLERY AUTO IMAGE SWITCHING
   // ===============================
-  const galleryImages = {
-    galleryScones: ["imgs/gallery/nu3.png","imgs/gallery/nu2.png","imgs/gallery/co1.png"],
-    galleryCookies: ["imgs/gallery/co3.png","imgs/gallery/co2.png","imgs/gallery/mf2.jpg"],
-    galleryMuffins: ["imgs/gallery/nu1.png","imgs/gallery/c2.png","imgs/gallery/mf3.jpg"]
-  };
-  Object.keys(galleryImages).forEach(id => {
+const galleryAutoImages = {
+    galleryScones: ["imgs/new/scones2.jpg","imgs/new/sc.jpg","imgs/new/scones4.jpg"],
+    galleryCookies: ["imgs/new/coockie1.jpg","imgs/new/coockie2.jpg","imgs/new/tr.jpg"],
+    galleryMuffins: ["imgs/new/mufn5.jpg","imgs/new/mufn1.jpg","imgs/new/mufn3.jpg"]
+};
+Object.keys(galleryAutoImages).forEach(id => {
     const element = document.getElementById(id);
     if (!element) return;
     let index = 0;
-    element.style.backgroundImage = `url(${galleryImages[id][index]})`;
+    element.style.backgroundImage = `url(${galleryAutoImages[id][index]})`;
     setInterval(() => {
-      index = (index + 1) % galleryImages[id].length;
-      element.style.backgroundImage = `url(${galleryImages[id][index]})`;
+        index = (index + 1) % galleryAutoImages[id].length;
+        element.style.backgroundImage = `url(${galleryAutoImages[id][index]})`;
     }, 5000);
-  });
+});
 
   // ===============================
-  // GALLERY POPUP
-  // ===============================
-  const popup = document.getElementById("galleryPopup");
-  const popupImage = document.getElementById("popupImage");
-  const popupTitle = document.getElementById("popupTitle");
-  const popupDescription = document.getElementById("popupDescription");
-  const popupClose = document.getElementById("galleryClose");
+// GALLERY POPUP WITH ARROWS
+// ===============================
+const galleryPopup = document.getElementById("galleryPopup");
+const popupImage = document.getElementById("popupImage");
+const popupTitle = document.getElementById("popupTitle");
 
-  const treatInfo = {
-    Scones: { desc: "Our homemade scones are baked fresh daily using traditional recipes." },
-    "Classic Cookies": { desc: "Our classic cookies are rich, chewy, and full of flavor." },
-    "Fluffy Muffins": { desc: "Our muffins are light, moist, and bursting with sweetness." }
-  };
+const popupDescription = document.getElementById("popupDescription");
+const popupClose = document.getElementById("galleryClose");
+const prevBtn = document.getElementById("prevImg");
+const nextBtn = document.getElementById("nextImg");
 
-  document.querySelectorAll(".gallery-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const treatName = card.getAttribute("data-treat");
-      popupTitle.innerText = treatName;
-      popupDescription.innerText = treatInfo[treatName].desc;
-      const cardImage = card.querySelector(".gallery-card-img");
-      popupImage.style.backgroundImage = cardImage.style.backgroundImage;
-      popup.style.display = "flex";
-    });
+const galleryPopupImages = {
+  "Scones": ["imgs/new/bu.jpg","imgs/new/sc.jpg","imgs/new/scones1.jpg","imgs/new/scones2.jpg"],
+  "Classic Cookies": ["imgs/new/coockie1.jpg","imgs/new/coockie2.jpg","imgs/new/tr.jpg"],
+  "Fluffy Muffins": ["imgs/new/mufn5.jpg","imgs/new/mufn1.jpg","imgs/new/mufn3.jpg"]
+};
+
+const treatInfo = {
+  "Scones": { desc: "Our homemade scones are baked fresh daily using traditional recipes." },
+  "Classic Cookies": { desc: "Our classic cookies are rich, chewy, and full of flavor." },
+  "Fluffy Muffins": { desc: "Our muffins are light, moist, and bursting with sweetness." }
+};
+
+let currentTreat = "";
+let currentIndex = 0;
+
+// OPEN POPUP
+document.querySelectorAll(".gallery-card").forEach(card => {
+  card.addEventListener("click", () => {
+    currentTreat = card.getAttribute("data-treat");
+    currentIndex = 0;
+    updatePopupImage();
+    popupTitle.innerText = currentTreat;
+    popupDescription.innerText = treatInfo[currentTreat].desc;
+    galleryPopup.style.display = "flex";
   });
+});
 
-  popupClose.addEventListener("click", () => popup.style.display = "none");
-  popup.addEventListener("click", e => { if (e.target === popup) popup.style.display = "none"; });
+// UPDATE POPUP IMAGE
+function updatePopupImage() {
+popupImage.style.backgroundImage = `url(${galleryPopupImages[currentTreat][currentIndex]})`;
+}
 
+// ARROW NAVIGATION
+prevBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + galleryPopupImages[currentTreat].length) % galleryPopupImages[currentTreat].length;
+  updatePopupImage();
+});
+
+nextBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % galleryPopupImages[currentTreat].length;
+  updatePopupImage();
+});
+// CLOSE POPUP
+popupClose.addEventListener("click", () => galleryPopup.style.display = "none");
+galleryPopup.addEventListener("click", e => { if (e.target === galleryPopup) galleryPopup.style.display = "none"; });
  
 });

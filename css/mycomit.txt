@@ -1,5 +1,5 @@
 git add .
-git commit -m "Final form fix" 
+git commit -m "new pic on about" 
 git push
 
 bro my thing is no longer sendingemail at all or creating pdf

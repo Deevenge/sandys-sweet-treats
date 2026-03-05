@@ -860,9 +860,17 @@ footer{
     padding:20px;
   }
 
-  .gallery-popup-img{
-    height:250px;
-  }
+.gallery-popup-img {
+  width: auto;          /* let width adjust automatically */
+  max-width: 90%;       /* fits inside popup */
+  height: auto;         /* adapt to image aspect ratio */
+  max-height: 70vh;     /* never exceed viewport height */
+  border-radius: 20px;
+  background-size: contain !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 20px;
+}
 
   /* about section stacks */
   .about-flex{
@@ -888,4 +896,37 @@ html{
 
 section{
   scroll-margin-top: 100px;
+}
+
+/* GALLERY ARROWS */
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 2.5rem;
+  padding: 10px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+.gallery-arrow:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.gallery-arrow.left {
+  left: 15px;
+}
+
+.gallery-arrow.right {
+  right: 15px;
+}
+
+/* Make popup relative for arrows to position correctly */
+.gallery-popup-content {
+  position: relative;
 }
