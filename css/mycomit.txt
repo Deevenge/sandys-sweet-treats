@@ -1,5 +1,5 @@
 git add .
-git commit -m "small image tweak" 
+git commit -m "renamed about image" 
 git push
 
 bro my thing is no longer sendingemail at all or creating pdf
